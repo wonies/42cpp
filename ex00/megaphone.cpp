@@ -1,16 +1,20 @@
 #include <iostream>
 #include <cstring>
-using namespace std;
+
 
 int main(int ac, char **av)
 {
 	if (ac == 1)
-		cout<<"* LOUD AND UNBEARABLE FEEDBACK NOISE *";
+		std::cout<<"* LOUD AND UNBEARABLE FEEDBACK NOISE *";
 	else if (ac > 1)
 	{
 		for (int i=1; i<ac; i++)
-			cout<<av[i];
+		{
+			for (int j=0; av[i][j]!='\0'; j++)
+				av[i][j] = toupper(av[i][j]);
+			std::cout<<av[i];
+		}
 	}
-	cout << endl;
+	std::cout << std::endl;
 	return 0;
 }
