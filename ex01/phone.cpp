@@ -139,7 +139,7 @@ void	PhoneBook::searchPB()
 				if (selectIdx <= total_idx && selectIdx != 0)
 					break ;
 				std::cin.clear();
-				std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+				std::cin.ignore(1000, '\n');
 				std::cout << "SELECT JUST NUMERIC OR -R-I-G-H-T-🧵-I-N-D-E-X" << std::endl;
 					std::cin >> selectIdx;
 			}
