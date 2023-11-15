@@ -31,7 +31,7 @@ public:
 void	Contact::infoCheck(std::string info)
 {
 	if (std::cin.eof())
-		exit(1);
+		std::exit(1);
 	if (info.empty())
 	{
 		while (1)
@@ -145,7 +145,7 @@ void	PhoneBook::searchPB()
 			}
 		}
 		if (std::cin.eof())
-			exit(1);
+			std::exit(1);
 		std::cin.ignore();
 		std::cin.clear();
 		printPB(selectIdx - 1);
@@ -161,7 +161,7 @@ int main(void)
 	{
 		std::cout << "COMMAND [ADD] [SEARCH] [EXIT] \n YOU MUST CHOOSE THIS ORDER __ IF NOT,, YOU DESERVE IT🐣" << std::endl;
 		if (std::cin.eof())
-			exit(1);
+			std::exit(1);
 		std::cin>>pb.input;
 		std::cin.ignore();
 		if (pb.input == "ADD" || pb.input == "add")
