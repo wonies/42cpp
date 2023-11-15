@@ -88,7 +88,7 @@ void	PhoneBook::addContact()
 	if (total_idx >= INFO_CONST::MAX_LEN)
 		total_idx = INFO_CONST::MAX_LEN;
 	if (idx >= INFO_CONST::MAX_LEN)
-	 	idx = idx % INFO_CONST::MAX_LEN ; 
+		idx = idx % INFO_CONST::MAX_LEN ; 
 	ct[idx].infoAdd();	
 	idx++;
 }
@@ -132,7 +132,7 @@ void	PhoneBook::searchPB()
 		}
 		std::cout << "SELECT -I-N-D-E-X-🧢: "<< std::endl;
 		std::cin >> selectIdx;
-		if (std::cin.fail() || selectIdx > total_idx || selectIdx == 0)
+		if (std::cin.fail() || selectIdx > total_idx || selectIdx == 0 || isalnum(selectIdx))
 		{
 			while (1)
 			{
@@ -141,12 +141,12 @@ void	PhoneBook::searchPB()
 				std::cin.clear();
 				std::cin.ignore(1000, '\n');
 				std::cout << "SELECT JUST NUMERIC OR -R-I-G-H-T-🧵-I-N-D-E-X" << std::endl;
-					std::cin >> selectIdx;
+				std::cin >> selectIdx;
 			}
 		}
 		if (std::cin.eof())
 			std::exit(1);
-		std::cin.ignore();
+		std::cin.ignore(1000, '\n');
 		std::cin.clear();
 		printPB(selectIdx - 1);
 	}
