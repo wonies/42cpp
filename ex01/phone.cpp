@@ -20,6 +20,7 @@ private:
 	std::string ds;
 public:
 	void	infoAdd();
+	void	infoCheck(std::string info);
 	std::string getPnum() const { return pnum; }
 	std::string getFname() const { return fname; }
 	std::string getLname() const { return lname; }
@@ -27,38 +28,39 @@ public:
 	std::string getDs() const { return ds; }
 };
 
+void	Contact::infoCheck(std::string info)
+{
+	if (std::cin.eof())
+		exit(1);
+	if (info.empty())
+	{
+		while (1)
+		{
+			if (!info.empty())
+				break ;
+			std::cout << "YOU HAVE TO FILL IT// IF YOU WANT TO GO NEXT STEP\n";
+			std::getline(std::cin, info);
+		}
+	}
+}
+
 void	Contact::infoAdd()
 {
 	std::cout << "[Phone NUMBER]:   ";
 	std::getline(std::cin, pnum);
-	if (pnum.empty())
-	{
-		while (1)
-		{
-			if (!pnum.empty())
-				break ;
-			std::cout << "YOU HAVE TO FILL IT// IF YOU WANT TO GO NEXT STEP\n";
-			std::getline(std::cin, pnum);
-		}
-	}
-	if (std::cin.eof())
-		exit(1);
+	infoCheck(pnum);
 	std::cout << "[First NAME]  :   ";
 	std::getline(std::cin, fname);
-	if (std::cin.eof())
-		exit(1);
+	infoCheck(fname);
 	std::cout << "[Last NAME]   :   ";
 	std::getline(std::cin, lname);
-	if (std::cin.eof())
-		exit(1);
+	infoCheck(lname);
 	std::cout << "[Nick NAME]   :   ";
 	std::getline(std::cin, aka);
-	if (std::cin.eof())
-		exit(1);
+	infoCheck(aka);
 	std::cout << "[Dark Secret {Dont't worry. Its first Secret}]: ";
 	std::getline(std::cin, ds);
-	if (std::cin.eof())
-		exit(1);
+	infoCheck(ds);
 }
 
 class	PhoneBook
@@ -128,8 +130,20 @@ void	PhoneBook::searchPB()
 			rulePB(ct[i].getAka());
 			std::cout << "|" << std::endl;
 		}
-		std::cout << "Select Index: "<< std::endl;
+		std::cout << "SELECT -I-N-D-E-X-🧢: "<< std::endl;
 		std::cin >> selectIdx;
+		if (std::cin.fail() || selectIdx > total_idx || selectIdx == 0)
+		{
+			while (1)
+			{
+				if (selectIdx <= total_idx && selectIdx != 0)
+					break ;
+				std::cin.clear();
+				std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+				std::cout << "SELECT JUST NUMERIC OR -R-I-G-H-T-🧵-I-N-D-E-X" << std::endl;
+					std::cin >> selectIdx;
+			}
+		}
 		if (std::cin.eof())
 			exit(1);
 		std::cin.ignore();
