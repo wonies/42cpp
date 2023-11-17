@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Account.hpp                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: wonhshin <wonhshin@student.42seoul.kr>     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/11/17 11:00:38 by wonhshin          #+#    #+#             */
+/*   Updated: 2023/11/17 12:46:34 by wonhshin         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 // ************************************************************************** //
 //                                                                            //
 //                Account.hpp for GlobalBanksters United                //
@@ -34,7 +46,7 @@ public:
 
 	void	makeDeposit( int deposit );
 	bool	makeWithdrawal( int withdrawal );
-	// int		checkAmount( void ) const;
+	int		checkAmount( void ) const;
 	void	displayStatus( void ) const;
 
 

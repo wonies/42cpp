@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   tests.cpp                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: wonhshin <wonhshin@student.42seoul.kr>     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/11/17 11:00:35 by wonhshin          #+#    #+#             */
+/*   Updated: 2023/11/17 11:00:36 by wonhshin         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 // ************************************************************************** //
 //                                                                            //
 //                tests.cpp for GlobalBanksters United                        //
@@ -10,16 +22,10 @@
 #include <vector>
 #include <algorithm>
 #include <functional>
-#include "Account.hpp"
+#include "../inc/Account.hpp"
 
 
 int		main( void ) {
-
-	// Account myAccount;
-
-    // // 테스트 메서드 호출
-    // myAccount.testDisplayTimestamp();
-
 	typedef std::vector<Account::t>							  accounts_t;
 	typedef std::vector<int>								  ints_t;
 	typedef std::pair<accounts_t::iterator, ints_t::iterator> acc_int_t;

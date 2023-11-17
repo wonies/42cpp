@@ -1,18 +1,24 @@
 NAME	=	megaphone
-CC		=	clang++
-CFLAG	=	-Wall -Wextra -Werror
+CC		=	c++ 
+CFLAG	=	-Wall -Wextra -Werror -std=c++98
 RM		=	rm -rf
 SRCS	=	megaphone.cpp
+
 OBJS	=	${SRCS:.c=.o}
 
 all	:
-	@$(MAKE) -j6 $(NAME)
+	@$(MAKE)  $(NAME)
 
 $(NAME) : $(OBJS)
-	@$(CC) $(CFLAGS) -o $(NAME) $(OBJS)
+	@echo "---------------------------"
+	@echo "|                         |"
+	@echo "|           📣            |"
+	@echo "|                         |"
+	@echo "---------------------------"
+	@$(CC) $(CFLAG) -o $(NAME) $(OBJS)
 
 %.o : %.c
-	@$(CC) $(CFLAGS) -c $< -o $@
+	@$(CC) $(CFLAG) -c $< -o $@
 
 clean :
 	@$(RM)
