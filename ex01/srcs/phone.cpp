@@ -6,7 +6,7 @@
 /*   By: wonhshin <wonhshin@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/17 11:00:53 by wonhshin          #+#    #+#             */
-/*   Updated: 2023/11/17 11:01:08 by wonhshin         ###   ########.fr       */
+/*   Updated: 2023/11/17 13:18:54 by wonhshin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,8 @@ void	PhoneBook::searchPB()
 		std::cin >> selectIdx;
 		while (std::cin.fail() || selectIdx > total_idx || selectIdx <= 0 || std::cin.peek() != '\n') 
 		{
+			if (std::cin.eof())
+				std::exit(1);
 			std::cin.clear();
 			std::cin.ignore(1000, '\n'); 
 			std::cout << "SELECT JUST NUMERIC OR -R-I-G-H-T-🧵-I-N-D-E-X" << std::endl;

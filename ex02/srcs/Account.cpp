@@ -6,7 +6,7 @@
 /*   By: wonhshin <wonhshin@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/17 11:00:29 by wonhshin          #+#    #+#             */
-/*   Updated: 2023/11/17 12:57:33 by wonhshin         ###   ########.fr       */
+/*   Updated: 2023/11/17 13:23:17 by wonhshin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int Account::_totalNbWithdrawals = 0;
 
 void	Account::_displayTimestamp(void)
 {
-	std::time_t now = std::time(nullptr);
+	std::time_t now = std::time(0);
     std::tm *ptm = std::localtime(&now);
 
     char buffer[18];

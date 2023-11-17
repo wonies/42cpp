@@ -6,7 +6,7 @@
 /*   By: wonhshin <wonhshin@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/17 11:00:35 by wonhshin          #+#    #+#             */
-/*   Updated: 2023/11/17 11:00:36 by wonhshin         ###   ########.fr       */
+/*   Updated: 2023/11/17 13:27:22 by wonhshin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ int		main( void ) {
 	ints_t::iterator	wit_end		= withdrawals.end();
 
 	Account::displayAccountsInfos();
-	std::for_each( acc_begin, acc_end, std::mem_fn( &Account::displayStatus ) );
+	std::for_each( acc_begin, acc_end, std::mem_fun_ref( &Account::displayStatus ) );
 
 	for ( 
 		acc_int_t it( acc_begin, dep_begin );
@@ -60,7 +60,7 @@ int		main( void ) {
 	}
 
 	Account::displayAccountsInfos();
-	std::for_each( acc_begin, acc_end, std::mem_fn( &Account::displayStatus ) );
+	std::for_each( acc_begin, acc_end, std::mem_fun_ref( &Account::displayStatus ) );
 
 	for ( acc_int_t it( acc_begin, wit_begin );
 		  it.first != acc_end && it.second != wit_end;
@@ -70,7 +70,7 @@ int		main( void ) {
 	}
 
 	Account::displayAccountsInfos();
-	std::for_each( acc_begin, acc_end, std::mem_fn( &Account::displayStatus ) );
+	std::for_each( acc_begin, acc_end, std::mem_fun_ref( &Account::displayStatus ) );
 
 	return 0;
 }
