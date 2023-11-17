@@ -6,7 +6,7 @@
 /*   By: wonhshin <wonhshin@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/17 11:00:48 by wonhshin          #+#    #+#             */
-/*   Updated: 2023/11/17 16:24:39 by wonhshin         ###   ########.fr       */
+/*   Updated: 2023/11/17 18:36:41 by wonhshin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@ void	Contact::infoCheck(std::string info)
 	{
 		while (1)
 		{
+			if (std::cin.eof())
+				std::exit(1);
 			if (!info.empty())
 				break ;
 			std::cout << "YOU HAVE TO FILL IT// IF YOU WANT TO GO NEXT STEP\n";
