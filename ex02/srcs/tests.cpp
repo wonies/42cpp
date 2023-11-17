@@ -6,7 +6,7 @@
 /*   By: wonhshin <wonhshin@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/17 11:00:35 by wonhshin          #+#    #+#             */
-/*   Updated: 2023/11/17 13:27:22 by wonhshin         ###   ########.fr       */
+/*   Updated: 2023/11/17 16:24:49 by wonhshin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,17 +24,16 @@
 #include <functional>
 #include "../inc/Account.hpp"
 
-
 int		main( void ) {
 	typedef std::vector<Account::t>							  accounts_t;
 	typedef std::vector<int>								  ints_t;
 	typedef std::pair<accounts_t::iterator, ints_t::iterator> acc_int_t;
 
 	int	const				amounts[]	= { 42, 54, 957, 432, 1234, 0, 754, 16576 };
-	size_t const			amounts_size( sizeof(amounts) / sizeof(int) ); // 총 amounts[]가 8개임을 확인하는 동적인 코드
-	accounts_t				accounts( amounts, amounts + amounts_size ); // 각자 42, 54, 957 을 가르키게 함 (포인터로)
-	accounts_t::iterator	acc_begin	= accounts.begin(); // 배열의 시작
-	accounts_t::iterator	acc_end		= accounts.end(); // 배열의 끝
+	size_t const			amounts_size( sizeof(amounts) / sizeof(int) );
+	accounts_t				accounts( amounts, amounts + amounts_size );
+	accounts_t::iterator	acc_begin	= accounts.begin();
+	accounts_t::iterator	acc_end		= accounts.end();
 
 	int	const			d[]			= { 5, 765, 564, 2, 87, 23, 9, 20 };
 	size_t const		d_size( sizeof(d) / sizeof(int) );

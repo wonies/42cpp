@@ -6,7 +6,7 @@
 /*   By: wonhshin <wonhshin@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/17 11:00:29 by wonhshin          #+#    #+#             */
-/*   Updated: 2023/11/17 13:23:17 by wonhshin         ###   ########.fr       */
+/*   Updated: 2023/11/17 16:24:47 by wonhshin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ void	Account::displayStatus( void ) const
 	Account::_displayTimestamp();
 	std::cout << "\tindex:" << _accountIndex << \
 	";amount:" <<  _amount << ";deposits:" <<  _nbDeposits << ";withdrawals:" << \
-	_nbWithdrawals <<std::endl;
+	_nbWithdrawals << std::endl;
 	_nbAccounts++;
 }
 

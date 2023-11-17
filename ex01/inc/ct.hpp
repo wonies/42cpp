@@ -1,31 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   megaphone.cpp                                      :+:      :+:    :+:   */
+/*   ct.hpp                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wonhshin <wonhshin@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/17 11:01:16 by wonhshin          #+#    #+#             */
-/*   Updated: 2023/11/17 15:53:34 by wonhshin         ###   ########.fr       */
+/*   Created: 2023/11/17 16:10:38 by wonhshin          #+#    #+#             */
+/*   Updated: 2023/11/17 16:24:36 by wonhshin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <iostream>
-#include <cstring>
-
-int main(int ac, char **av)
+class	Contact
 {
-	if (ac == 1)
-		std::cout << "* LOUD AND UNBEARABLE FEEDBACK NOISE *";
-	else if (ac > 1)
-	{
-		for (int i = 1; i < ac; i++)
-		{
-			for (int j = 0; av[i][j] != '\0'; j++)
-				av[i][j] = toupper(av[i][j]);
-			std::cout << av[i];
-		}
-	}
-	std::cout << std::endl;
-	return 0;
-}
+private:
+	std::string pnum;
+	std::string fname;
+	std::string lname;
+	std::string aka;
+	std::string ds;
+public:
+	void	infoAdd();
+	void	infoCheck(std::string info);
+	std::string getPnum() const { return pnum; }
+	std::string getFname() const { return fname; }
+	std::string getLname() const { return lname; }
+	std::string getAka() const { return aka; }
+	std::string getDs() const { return ds; }
+};

@@ -6,7 +6,7 @@
 /*   By: wonhshin <wonhshin@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/17 11:00:53 by wonhshin          #+#    #+#             */
-/*   Updated: 2023/11/17 13:18:54 by wonhshin         ###   ########.fr       */
+/*   Updated: 2023/11/17 16:24:41 by wonhshin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,3 +81,13 @@ void	PhoneBook::searchPB()
 		printPB(selectIdx - 1);
 	}
 }
+
+PhoneBook:: PhoneBook()
+{
+	idx = 0;
+	total_idx = 0;
+};
+
+PhoneBook:: ~PhoneBook()
+{
+};

@@ -1,7 +1,20 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   pb.hpp                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: wonhshin <wonhshin@student.42seoul.kr>     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/11/17 16:09:36 by wonhshin          #+#    #+#             */
+/*   Updated: 2023/11/17 16:24:38 by wonhshin         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <iostream>
 #include <string>
 #include <iomanip>
 #include <cstdlib>
+#include "ct.hpp"
 
 namespace INFO_CONST
 {
@@ -11,24 +24,6 @@ namespace INFO_CONST
 	};
 }
 
-class	Contact
-{
-private:
-	std::string pnum;
-	std::string fname;
-	std::string lname;
-	std::string aka;
-	std::string ds;
-public:
-	void	infoAdd();
-	void	infoCheck(std::string info);
-	std::string getPnum() const { return pnum; }
-	std::string getFname() const { return fname; }
-	std::string getLname() const { return lname; }
-	std::string getAka() const { return aka; }
-	std::string getDs() const { return ds; }
-};
-
 class	PhoneBook
 {
 private:
@@ -36,12 +31,9 @@ private:
 public:
 	int idx;
 	int total_idx;
-	PhoneBook()
-	{
-		idx = 0;
-		total_idx = 0;
-	};
 	std::string input;
+	PhoneBook();
+	~PhoneBook( void );
 	void	addContact();
 	void	printPB(int idx);
 	void	rulePB(std::string text);
