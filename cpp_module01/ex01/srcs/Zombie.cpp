@@ -11,7 +11,7 @@ Zombie::Zombie()
 
 Zombie::~Zombie()
 {
-    std::cout << "[DIED AGAIN 🧟‍♂️ | 🧟‍♀️ " << name  << ']' << ": Zombie is Disappear" << std::endl;
+    std::cout << "[DIED AGAIN 🧟‍♂️ | 🧟‍♀️ " << name  << ']' << ": " << id << "th Zombie is Disappear" << std::endl;
 };
 
 void    Zombie::settingName(std::string naming)
@@ -19,11 +19,7 @@ void    Zombie::settingName(std::string naming)
     name = naming;
 }
 
-Zombie* zombieHorde( int N, std::string name )
+void    Zombie::setId(int id)
 {
-    Zombie  *horde = new Zombie[N];
-    
-    for (int i=0; i<N; i++)
-        horde[i].settingName(name);
-    return horde;
+    this->id = id;
 }

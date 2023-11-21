@@ -3,7 +3,8 @@ CC		=	c++
 CFLAG	=	-Wall -Wextra -Werror -std=c++98
 RM		=	rm -rf
 SRCS	=	srcs/main.cpp \
-			srcs/Zombie.cpp
+			srcs/Zombie.cpp \
+			srcs/ZombieHorde.cpp
 
 OBJS	=	${SRCS:.c=.o}
 
@@ -13,7 +14,7 @@ all	:
 $(NAME) : $(OBJS)
 	@echo "---------------------------"
 	@echo "|                         |"
-	@echo "|           🧟            |"
+	@echo "|           🧟🧟‍♀️🧟‍♂️      |"
 	@echo "|                         |"
 	@echo "---------------------------"
 	@$(CC) $(CFLAG) -o $(NAME) $(OBJS)

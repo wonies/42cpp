@@ -6,7 +6,7 @@
 /*   By: wonhshin <wonhshin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 18:21:18 by wonhshin          #+#    #+#             */
-/*   Updated: 2023/11/21 10:43:52 by wonhshin         ###   ########.fr       */
+/*   Updated: 2023/11/21 11:20:43 by wonhshin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int main(void)
     
     for (int i=0; i<Zombie::HordeSize; i++)
         horde[i].announce(i);
-    
+    // std::cout << "first add : " << horde->getName() << std::endl;
     delete [] horde;
     return (0);
 }
