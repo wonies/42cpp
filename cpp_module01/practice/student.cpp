@@ -19,6 +19,7 @@ public:
 		age = _age;
 		stuId = _stuId;
 	}
+	
 	void getInfo()
 	{
 		cout << "name : " << name << endl;
