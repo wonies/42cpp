@@ -1,4 +1,4 @@
-#include "sed.hpp"
+#include "../inc/sed.hpp"
 
 static std::string replace(std::string line, int pos, int srclen, std::string convert);
 

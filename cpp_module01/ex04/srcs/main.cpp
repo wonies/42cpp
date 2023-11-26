@@ -1,5 +1,4 @@
-#include "../srcs/sed.hpp"
-
+#include "../inc/sed.hpp"
 
 void sed(char **av)
 {

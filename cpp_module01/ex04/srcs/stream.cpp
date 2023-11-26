@@ -1,12 +1,16 @@
-#include "stream.hpp"
+#include "../inc/stream.hpp"
 
 FileSystem::FileSystem(const std::string &fname)
 {
     srcFile.open(fname);
+    if (!srcFile.is_open())
+    {
+        std::cerr << "NOT OPENED" << std::endl;
+        std::exit(2);
+    }
     std::string newFile = fname + ".replace";
-    std::cout << fname << std::endl;
     destFile.open(newFile);
-    if (!srcFile.is_open() || !destFile.is_open())
+    if (!destFile.is_open())
         std::cerr << "File cannot be opened" << std::endl;
 }
 
