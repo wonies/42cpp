@@ -57,6 +57,6 @@ void program(const std::string &filename, const std::string &s1, const std::stri
 int main(void)
 {
     program("wonie", "wonie", "konie");
-    program("konie", "konie", "wonie");
-    program("error", "err", "e");
+    // program("konie", "konie", "wonie");
+    // program("error", "err", "e");
 }

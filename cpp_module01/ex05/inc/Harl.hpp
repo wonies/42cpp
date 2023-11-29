@@ -2,6 +2,7 @@
 #define __HARL_H
 
 #include <iostream>
+#include <string>
 
 class Harl
 {
@@ -13,12 +14,13 @@ private:
 public:
     Harl()
     {
-        funcs[0] = &Harl::debug;
-        funcs[1] = &Harl::info;
-        funcs[2] = &Harl::warning;
-        funcs[3] = &Harl::error;
-    }
-    void (Harl::*funcs[4])( void );
+        HarlsFunc[0] = &Harl::debug;
+        HarlsFunc[1] = &Harl::info;
+        HarlsFunc[2] = &Harl::warning;
+        HarlsFunc[3] = &Harl::error;
+    };
+    ~Harl();
+    void (Harl::*HarlsFunc[4])( void );
     void complain( std::string level );
 };
 
