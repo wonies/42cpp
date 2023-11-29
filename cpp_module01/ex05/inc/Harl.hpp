@@ -1,5 +1,5 @@
-#ifndef __HARL_H
-#define __HARL_H
+#ifndef HARL_H
+#define HARL_H
 
 #include <iostream>
 #include <string>
