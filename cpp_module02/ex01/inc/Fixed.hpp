@@ -55,11 +55,11 @@ public:
 	};
 	float toFloat( void ) const
 	{
-		return static_cast<float>(this->value) / (1 << this->bits);
+		return ((float)this->value / (1 << this->bits));
 	};
 	int toInt( void ) const
 	{
-		return this->value >> bits;
+		return this->value >> this->bits;
 	};
 	
 };
