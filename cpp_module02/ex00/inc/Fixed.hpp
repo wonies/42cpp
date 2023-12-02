@@ -17,13 +17,16 @@ public:
 	};
 	Fixed(const Fixed& obj)
 	{
-		this->fixedInt = obj.fixedInt;
 		std::cout << "Copy constructor called" << std::endl;
+		this->fixedInt = obj.getRawBits();
 	};
 	Fixed &operator= (const Fixed &obj)
 	{
-		this->fixedInt = obj.fixedInt;
 		std::cout << "Copy assignment operator called" << std::endl;
+		if (this != &obj)
+		{
+			this->fixedInt = obj.getRawBits();
+		}
 		return *this;
 	};
 	~Fixed()
