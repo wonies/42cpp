@@ -7,7 +7,6 @@ void sed(char **av)
     data.program();
 }
 
-
 int main(int ac, char **av)
 {
     if (ac != 4)
