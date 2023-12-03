@@ -1,7 +1,9 @@
-#include "../inc/stream.hpp"
+#include "../inc/fileSystem.hpp"
 
 FileSystem::FileSystem(const std::string &fname)
 {
+    // std::ifstream srcFile(fname.c_str());
+    // srcFile.open(fname.c_str());
     srcFile.open(fname);
     if (!srcFile.is_open())
     {

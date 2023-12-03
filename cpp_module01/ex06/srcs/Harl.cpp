@@ -56,19 +56,22 @@ void Harl::switchloop( std::string level )
 
     switch (switchnum)
     {
-    case 0:
-        std::cout << "[ Probably complaining about insignificant problems ]" << std::endl;
-        break ;
     case 1:
         (this->*HarlsFunc[0])();
+        __attribute__((fallthrough));
     case 2:
         (this->*HarlsFunc[1])();
+        __attribute__((fallthrough));
     case 3:
         (this->*HarlsFunc[2])();
+        __attribute__((fallthrough));
     case 4:
         (this->*HarlsFunc[3])();
+        break ;
     default:
+        std::cout << "[ Probably complaining about insignificant problems ]" << std::endl;
         break;
     }
 }
+
 
