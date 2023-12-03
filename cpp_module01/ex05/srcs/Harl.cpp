@@ -32,7 +32,7 @@ void Harl::complain( std::string level )
 	
 	for (int i=0; i<4; i++)
 	{
-		if ( level.compare(levels[i]) == 0)
+		if ( level.compare(levels[i]) == 0) // level == levels[i]
 		{
 			(this->*HarlsFunc[i])();
 			break ;
