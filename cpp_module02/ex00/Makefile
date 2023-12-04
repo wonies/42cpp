@@ -3,6 +3,7 @@ CC		=	c++
 CFLAG	=	-Wall -Wextra -Werror -std=c++98
 RM		=	rm -rf
 SRCS	=	srcs/main.cpp \
+			srcs/Fixed.cpp
 			
 
 OBJS	=	${SRCS:.c=.o}
