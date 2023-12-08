@@ -40,7 +40,6 @@ public:
 		this->fixedInt = raw;
 		std::cout << this->fixedInt << std::endl;
 	};
-
 };
 
 

@@ -4,6 +4,7 @@
 #include <iostream>
 #include <string>
 #include <bitset>
+#include <cmath>
 
 class Fixed
 {
@@ -11,62 +12,19 @@ private:
 	int value;
 	static const int bits = 8;
 public:
-	Fixed()
-	{
-		this->value = 0;
-		std::cout << "Default constructor called" << std::endl;
-	};
-	Fixed( int n )
-	{
-		this->value = n << bits;
-		std::cout << "Int constructor called" << std::endl;
-	};
-	Fixed( float floatn )
-	{
-		std::cout << "Float constructor called" << std::endl;
-		this->value = roundf( floatn * (1 << this->bits));
-	}
-	Fixed(const Fixed& obj)
-	{
-		std::cout << "Copy constructor called" << std::endl;
-		this->value = obj.getRawBits();
-	};
-	Fixed &operator= (const Fixed &obj)
-	{
-		std::cout << "Copy assignment operator called" << std::endl;
-		if (this != &obj)
-		{
-			this->value = obj.getRawBits();
-		}
-		return *this;
-	};
-	~Fixed()
-	{
-		std::cout << "Destructor called" << std::endl;
-	};
-	int getRawBits( void ) const
-	{
-		return this->value;
-	};
-	void setRawBits( int const raw )
-	{
-		this->value = raw;
-		std::cout << this->value << std::endl;
-	};
-	float toFloat( void ) const
-	{
-		return ((float)this->value / (1 << this->bits));
-	};
-	int toInt( void ) const
-	{
-		return this->value >> this->bits;
-	};
-	
+	Fixed();
+	Fixed( const int val );
+	Fixed( const float val );
+	~Fixed( void );
+	Fixed(const Fixed &ob);
+	Fixed& operator= (const Fixed &obj);
+	float toFloat( void ) const;
+	int	toInt( void ) const;
+	int getRawBits( void ) const;
+	void setRawBits( int const raw );
+	// float experiment( void ) const;
 };
 
-std::ostream& operator<<(std::ostream& os, const Fixed& obj) {
-	os << obj.toFloat();
-    return os;
-	};
+std::ostream& operator<<(std::ostream& os, const Fixed& obj);
 
 #endif
