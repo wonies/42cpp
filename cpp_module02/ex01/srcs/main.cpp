@@ -1,6 +1,4 @@
-#include <iostream>
-#include "../inc/Fixed.hpp"
-#include <stdio.h>
+#include "Fixed.hpp"
 
 int main( void ) 
 {

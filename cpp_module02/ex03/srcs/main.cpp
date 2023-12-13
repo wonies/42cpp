@@ -1,4 +1,4 @@
-#include "../res/Point.hpp"
+#include "Point.hpp"
 
 int main( void )
 {
@@ -17,4 +17,11 @@ int main( void )
     else
         std::cout << "The Point is Out of range" << std::endl;
 
+    // Point test;
+    // Point copy(1, 2);
+
+    // test = copy;
+    // std::cout << test.getX() << " " << test.getY() << "\n";
+
+    return 0;
 }

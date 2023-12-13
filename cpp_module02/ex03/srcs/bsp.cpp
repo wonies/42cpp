@@ -1,4 +1,4 @@
-#include "../res/Point.hpp"
+#include "Point.hpp"
 
 Point line( const Point &start, const Point &end )
 {   

@@ -1,4 +1,4 @@
-NAME	=	Fixed_Operate
+NAME	=	BSP
 CXX = c++
 RM = rm -f
 
@@ -16,7 +16,7 @@ all: $(OBJ_DIR) $(NAME)
 $(NAME): $(OBJS)
 	@echo "---------------------------"
 	@echo "|                         |"
-	@echo "|       Fixed_Operate     |"
+	@echo "|       BSP 🌟            |"
 	@echo "|                         |"
 	@echo "---------------------------"
 	@$(CXX) $(CXXFLAGS) $^ -o $(NAME)

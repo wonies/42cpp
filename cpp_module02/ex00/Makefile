@@ -1,35 +1,38 @@
 NAME	=	Fixed
-CXX		=	c++
-CXXFLAGS	=	-Wall -Wextra -Werror -std=c++98
-RM		=	rm -rf
-SRCS	=	srcs/main.cpp \
-			srcs/Fixed.cpp
-			
+CXX = c++
+RM = rm -f
 
-OBJS	=	${SRCS:.c=.o}
+CXXFLAGS = -Wall -Wextra -Werror -std=c++98
+INCLUDE = -I Inc
 
-all	:
-	@$(MAKE)  $(NAME)
+SRC_DIR = srcs
+OBJ_DIR = obj
 
-$(NAME) : $(OBJS)
+SRCS = $(wildcard $(SRC_DIR)/*.cpp)
+OBJS = $(patsubst $(SRC_DIR)/%.cpp, $(OBJ_DIR)/%.o, $(SRCS))
+
+all: $(OBJ_DIR) $(NAME)
+
+$(NAME): $(OBJS)
 	@echo "---------------------------"
 	@echo "|                         |"
 	@echo "|          fixed...       |"
 	@echo "|                         |"
 	@echo "---------------------------"
-	@$(CXX) $(CXXFLAG) -o $(NAME) $(OBJS)
+	@$(CXX) $(CXXFLAGS) $^ -o $(NAME)
 
-%.o : %.c
-	@$(CXX) $(CXXFLAG) -c $< -o $@
+$(OBJ_DIR):
+	@mkdir $@
 
-clean :
-	@$(RM)
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.cpp
+	@$(CXX) $(CXXFLAGS) -c $< -o $@ $(INCLUDE)
 
-fclean : clean
+clean:
+	@$(RM) -r $(OBJ_DIR)
+
+fclean: clean
 	@$(RM) $(NAME)
 
-re :
-	@$(MAKE) fclean
-	@$(MAKE) all
+re: fclean all
 
-.PHONY : all clean fclean re
+.PHONY: clean fclean re all
