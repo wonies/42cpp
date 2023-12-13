@@ -1,6 +1,6 @@
 NAME	=	Fixed_Point
-CC		=	c++ 
-CFLAG	=	-Wall -Wextra -Werror -std=c++98
+CXX		=	c++
+CXXFLAGS	=	-Wall -Wextra -Werror -std=c++98
 RM		=	rm -rf
 SRCS	=	srcs/main.cpp \
 			srcs/Fixed.cpp
@@ -17,10 +17,10 @@ $(NAME) : $(OBJS)
 	@echo "|       Fixed_Point       |"
 	@echo "|                         |"
 	@echo "---------------------------"
-	@$(CC) $(CFLAG) -o $(NAME) $(OBJS)
+	@$(CXX) $(CXXFLAG) -o $(NAME) $(OBJS)
 
 %.o : %.c
-	@$(CC) $(CFLAG) -c $< -o $@
+	@$(CXX) $(CXXFLAG) -c $< -o $@
 
 clean :
 	@$(RM)

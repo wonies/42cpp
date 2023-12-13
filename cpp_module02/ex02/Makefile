@@ -1,6 +1,6 @@
-NAME	=	Fixed
+NAME	=	Fixed_Operate
 CXX		=	c++
-CXXFLAGS	=	-Wall -Wextra -Werror -std=c++98
+CXXFLAGS	= -Wall -Wextra -Werror -std=c++98
 RM		=	rm -rf
 SRCS	=	srcs/main.cpp \
 			srcs/Fixed.cpp
@@ -14,7 +14,7 @@ all	:
 $(NAME) : $(OBJS)
 	@echo "---------------------------"
 	@echo "|                         |"
-	@echo "|          fixed...       |"
+	@echo "|       Fixed_Operate     |"
 	@echo "|                         |"
 	@echo "---------------------------"
 	@$(CXX) $(CXXFLAG) -o $(NAME) $(OBJS)

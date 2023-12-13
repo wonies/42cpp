@@ -24,12 +24,10 @@ Fixed& Fixed::operator= (const Fixed &obj)
 
 Fixed::Fixed(const int val) : value(val << Fixed::bits)
 {
-    std::cout << this->value << std::endl;
 }
 
 Fixed::Fixed(const float val) : value(roundf((float)(val * (1 << Fixed::bits))))
 {
-    std::cout << "float_fixed" << std::endl;
 }
 
 
@@ -66,8 +64,7 @@ Fixed Fixed::operator-( const Fixed &val) const
 
 Fixed Fixed::operator*( const Fixed &val) const
 {
-    std::cout << "value * val    :" << this->value * val.value << std::endl;
-    return Fixed(float((this->value * val.value) / 256) /256);
+    return Fixed(float((this->value * val.value) / 256) / 256);
 }
 
 Fixed Fixed::operator/( const Fixed &val) const
@@ -131,37 +128,35 @@ Fixed Fixed::operator--( int )
     return temp;
 }
 
+const Fixed& Fixed::min(const Fixed &a, const Fixed &b)
+{
+    return (a.getValue() < b.getValue()) ? a : b;
+}
+
+const Fixed& Fixed::max(const Fixed &a, const Fixed &b)
+{
+    return (a.getValue() > b.getValue()) ? a : b;
+}
+
 Fixed& Fixed::min(Fixed &a, Fixed &b)
 {
-    if (a.value > b.value)
-        return b;
-    else
-        return a;
+   return (a.getValue() < b.getValue()) ? a : b;
 }
 
-Fixed& Fixed::max(const Fixed &a, const Fixed &b)
+Fixed& Fixed::max(Fixed &a, Fixed &b)
 {
-    if (a.value > b.value)
-        return a;
-    else
-        return b;
+    return (a.getValue() > b.getValue()) ? a : b;
 }
 
-// static const Fixed& Fixed::min(Fixed &a, Fixed &b)
-// {
-//     if (a->value > b->value)
-//         return &b;
-//     else
-//         return &a;
-// }
+int Fixed::getValue( void ) const
+{
+    return value;
+}
 
-// static const Fixed& Fixed::max(Fixed &a, Fixed &b)
-// {
-//     if (a->value > b->value)
-//         return &a;
-//     else
-//         return &b;
-// }
+void Fixed::setValue( int newval ) 
+{
+    value = newval;
+}
 
 std::ostream& operator<<(std::ostream& os, const Fixed& obj) {
 	 os << obj.toFloat();
