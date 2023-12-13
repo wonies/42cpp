@@ -69,7 +69,10 @@
 		"utility": "cpp",
 		"deque": "cpp",
 		"fstream": "cpp",
-		"stack": "cpp"
+		"stack": "cpp",
+		"__memory": "cpp",
+		"filesystem": "cpp"
 	},
-	"C_Cpp.errorSquiggles": "disabled"
+	"C_Cpp.errorSquiggles": "disabled",
+	"errorLens.fontFamily": "D2coding"
 }
