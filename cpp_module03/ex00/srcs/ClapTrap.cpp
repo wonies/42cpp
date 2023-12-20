@@ -5,12 +5,22 @@ ClapTrap::ClapTrap(void) {}
 ClapTrap::ClapTrap(std::string _name)
     : Name(_name), HitPoints(10), EnergyPoints(10), AttackDamage(10) {}
 
-ClapTrap::ClapTrap(const ClapTrap &ct) { *this = ct; }
+ClapTrap::ClapTrap(const ClapTrap &ct)
+    : Name(ct.Name),
+      HitPoints(ct.HitPoints),
+      EnergyPoints(ct.EnergyPoints),
+      AttackDamage(ct.AttackDamage) {
+  *this = ct;
+}
+// 성능이 중요한 상황에서는 복사연산자에서 바로 초기화하는 것이 낫다.
 
 ClapTrap &ClapTrap::operator=(const ClapTrap &ct) {
-  if (this != ct) {
+  if (this != &ct) {
+    this->Name = ct.Name;
+    this->HitPoints = ct.HitPoints;
+    this->EnergyPoints = ct.EnergyPoints;
+    this->AttackDamage = ct.AttackDamage;
   }
-  (void)&ct;
   return (*this);
 }
 
@@ -62,14 +72,14 @@ void ClapTrap::beRepaired(unsigned int amount) {
             << std::endl;
 }
 
-void ClapTrap::others(ClapTrap &ct, unsigned int _amount) {
-  ct.HitPoints += _amount;
-  std::cout << ct.Name << " " << _amount << std::endl;
-}
+// void ClapTrap::others(ClapTrap &ct, unsigned int _amount) {
+//   ct.HitPoints += _amount;
+//   std::cout << ct.Name << " " << _amount << std::endl;
+// }
 
-void ClapTrap::others_() {
-  // Mem++;
-  std::cout << "static: \t" << Mem << std::endl;
-}
+// void ClapTrap::others_() {
+//   // Mem++;
+//   std::cout << "static: \t" << Mem << std::endl;
+// }
 
 // int ClapTrap::Mem = 0;

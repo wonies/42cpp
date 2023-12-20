@@ -14,8 +14,8 @@ class ClapTrap {
   void attack(const std::string &target);
   void takeDamage(unsigned int amount);
   void beRepaired(unsigned int amount);
-  static void others(ClapTrap &ct, unsigned int _amount);
-  static void others_();
+  // static void others(ClapTrap &ct, unsigned int _amount);
+  // static void others_();
 
  protected:
  private:

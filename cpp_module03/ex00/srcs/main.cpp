@@ -10,6 +10,6 @@ int main(void) {
   pock.beRepaired(1);
   pock.takeDamage(4);
   // ClapTrap::others(pock, 5);
-  ClapTrap::others_();
+  // ClapTrap::others_();
   return 0;
 }
