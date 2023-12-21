@@ -3,7 +3,7 @@
 class Person {
  private:
   int age;
-  char name[50];
+  char *name[50];
 
  public:
   Person(int _age, char *_name) : age(_age) { strcpy(name, _name); }
@@ -15,7 +15,7 @@ class Person {
 
 class UnivStudent : public Person {
  private:
-  char major[50];
+  char *major[50];
 
  public:
   UnivStudent(char *_name, int _age, char *_major) : Person(_age, _name) {

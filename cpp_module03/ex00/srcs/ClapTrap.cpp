@@ -27,7 +27,10 @@ ClapTrap &ClapTrap::operator=(const ClapTrap &ct) {
 ClapTrap::~ClapTrap(void) {}
 
 void ClapTrap::attack(const std::string &target) {
-  if (EnergyPoints <= 0 || HitPoints <= 0) return;
+  if (EnergyPoints <= 0 || HitPoints <= 0) {
+    std::cout << "DANGER 💥 " << Name << "(은/는) 공격할 수 없다." << std::endl;
+    return;
+  }
   std::cout << this->Name << " (은/는) " << target << " (을/를) "
             << AttackDamage << " 만큼 공격했다!" << std::endl;
   EnergyPoints--;
@@ -42,7 +45,10 @@ void ClapTrap::attack(const std::string &target) {
 }
 
 void ClapTrap::takeDamage(unsigned int amount) {
-  if (EnergyPoints <= 0 || HitPoints <= 0) return;
+  if (EnergyPoints <= 0 || HitPoints <= 0) {
+    std::cout << " ☠️ " << Name << " (은/는) 죽었다...ㅜso sad.." << std::endl;
+    return;
+  }
   HitPoints -= amount;
   std::cout << this->Name << " (은/는) " << amount << " 만큼 공격받았다."
             << std::endl;
@@ -57,7 +63,10 @@ void ClapTrap::takeDamage(unsigned int amount) {
 }
 
 void ClapTrap::beRepaired(unsigned int amount) {
-  if (EnergyPoints <= 0 || HitPoints <= 0) return;
+  if (EnergyPoints <= 0 || HitPoints <= 0) {
+    std::cout << " 🤖 " << Name << " (은/는) 포션이 다 떨어졌다." << std::endl;
+    return;
+  }
   EnergyPoints--;
   HitPoints += amount;
   std::cout << Name << " (은/는) " << amount << " 만큼 회복하였다. "
