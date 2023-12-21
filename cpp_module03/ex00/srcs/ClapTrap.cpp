@@ -85,7 +85,6 @@ void ClapTrap::beRepaired(unsigned int amount) {
 //   ct.HitPoints += _amount;
 //   std::cout << ct.Name << " " << _amount << std::endl;
 // }
-
 // void ClapTrap::others_() {
 //   // Mem++;
 //   std::cout << "static: \t" << Mem << std::endl;

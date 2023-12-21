@@ -3,7 +3,9 @@
 ClapTrap::ClapTrap(void) { std::cout << "🥚Base Constructor" << std::endl; }
 
 ClapTrap::ClapTrap(std::string _name)
-    : Name(_name), HitPoints(100), EnergyPoints(50), AttackDamage(20) {}
+    : Name(_name), HitPoints(100), EnergyPoints(50), AttackDamage(20) {
+  std::cout << "🥚Base Constructor" << std::endl;
+}
 
 ClapTrap::ClapTrap(const ClapTrap &ct)
     : Name(ct.Name),
@@ -29,7 +31,7 @@ ClapTrap::~ClapTrap(void) { std::cout << "Base Destructor🥚" << std::endl; }
 void ClapTrap::attack(const std::string &target) {
   if (EnergyPoints <= 0 || HitPoints <= 0) return;
   std::cout << this->Name << " (은/는) " << target << " (을/를) "
-            << AttackDamage << " 만큼 공격했다!" << std::endl;
+            << AttackDamage << " 만큼 공격했다!⚡️" << std::endl;
   EnergyPoints--;
   std::cout << "\n\n-----------------CURRENT STATUS------------------"
             << std::endl;
@@ -44,7 +46,7 @@ void ClapTrap::attack(const std::string &target) {
 void ClapTrap::takeDamage(unsigned int amount) {
   if (EnergyPoints <= 0 || HitPoints <= 0) return;
   HitPoints -= amount;
-  std::cout << this->Name << " (은/는) " << amount << " 만큼 공격받았다."
+  std::cout << this->Name << " (은/는) " << amount << " 만큼 공격받았다.💥"
             << std::endl;
   std::cout << "\n\n-----------------CURRENT STATUS------------------"
             << std::endl;
@@ -57,29 +59,25 @@ void ClapTrap::takeDamage(unsigned int amount) {
 }
 
 void ClapTrap::beRepaired(unsigned int amount) {
-  if (EnergyPoints <= 0 || HitPoints <= 0) return;
+  if (EnergyPoints <= 0 || HitPoints <= 0) {
+    std::cout << Name << " (은/는) "
+              << "죽었기 때문에 스스로를 치유할 수 없다🙌🏻" << std::endl;
+    return;
+  }
   EnergyPoints--;
   HitPoints += amount;
-  std::cout << Name << " (은/는) " << amount << " 만큼 회복하였다. "
+  std::cout << Name << " (은/는) " << amount << " 만큼 회복하였다.🍎 "
             << std::endl;
   std::cout << "\n\n-----------------CURRENT STATUS------------------"
             << std::endl;
   std::cout << "\t\tcurrent ENERGY : " << EnergyPoints << std::endl;
   std::cout << "\t\tcurrent HITPOINTS : " << HitPoints << std::endl;
-  if (EnergyPoints <= 3)
+  if (EnergyPoints <= 10)
     std::cout << "[WARNING] CHECK YOUR ENERGY POINTS!" << std::endl;
   std::cout << "---------------------STATUS-----------------------\n"
             << std::endl;
 }
 
-// void ClapTrap::others(ClapTrap &ct, unsigned int _amount) {
-//   ct.HitPoints += _amount;
-//   std::cout << ct.Name << " " << _amount << std::endl;
-// }
+int ClapTrap::getHP(void) { return HitPoints; }
 
-// void ClapTrap::others_() {
-//   // Mem++;
-//   std::cout << "static: \t" << Mem << std::endl;
-// }
-
-// int ClapTrap::Mem = 0;
+void ClapTrap::setHP(int hp){HitPoints = hp};
