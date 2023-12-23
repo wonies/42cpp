@@ -12,7 +12,7 @@ ScavTrap::ScavTrap(const std::string _name) : ClapTrap(_name) {
   setAttackDamage(20);
 }
 
-ScavTrap::ScavTrap(const ScavTrap &instance) { *this = instance; };
+ScavTrap::ScavTrap(const ScavTrap &instance) : ClapTrap(instance) { *this = instance; };
 
 ScavTrap &ScavTrap::operator=(const ScavTrap &rhs) {
   if (this != &rhs) {

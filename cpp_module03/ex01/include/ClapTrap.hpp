@@ -15,6 +15,7 @@ class ClapTrap {
   void takeDamage(unsigned int amount);
   void beRepaired(unsigned int amount);
   int getHP(void);
+  void setHP(int hp);
   // static void others(ClapTrap &ct, unsigned int _amount);
   // static void others_();
 
