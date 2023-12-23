@@ -5,6 +5,7 @@ ClapTrap::ClapTrap(void) { std::cout << "🥚Base Constructor" << std::endl; }
 ClapTrap::ClapTrap(std::string _name)
     : Name(_name), HitPoints(100), EnergyPoints(50), AttackDamage(20) {
   std::cout << "🥚Base Constructor" << std::endl;
+  std::cout << "🥚Name: " << Name << std::endl;
 }
 
 ClapTrap::ClapTrap(const ClapTrap &ct)

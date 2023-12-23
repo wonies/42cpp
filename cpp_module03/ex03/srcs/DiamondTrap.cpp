@@ -8,6 +8,7 @@ DiamondTrap::DiamondTrap(std::string _name)
       ScavTrap(_name),
       Name(_name) {
   std::cout << "💎Diamond_Trap_CONSTRUCTOR💎" << std::endl;
+  std::cout << "💎Name: 💎" << Name << std::endl;
 }
 DiamondTrap::DiamondTrap(DiamondTrap const &instance) { *this = instance; }
 
