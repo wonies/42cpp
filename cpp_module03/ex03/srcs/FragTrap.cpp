@@ -10,7 +10,9 @@ FragTrap::FragTrap(std::string _name) : ClapTrap(_name) {
   setAttackDamage(40);
 }
 
-FragTrap::FragTrap(const FragTrap &instance) : ClapTrap(instance) { *this = instance; }
+FragTrap::FragTrap(const FragTrap &instance) : ClapTrap(instance) {
+  *this = instance;
+}
 
 FragTrap &FragTrap::operator=(const FragTrap &rhs) {
   if (this != &rhs) {

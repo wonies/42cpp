@@ -8,7 +8,6 @@ int main(void) {
   ddt.beRepaired(6);
   ddt.highFivesGuys();
   ddt.guardGate();
-  ddt.whoAmI();
 
   return 0;
 }
