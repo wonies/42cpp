@@ -1,6 +1,6 @@
 #include "Cat.hpp"
 
-Cat::Cat(void) {}
+Cat::Cat(void) { type = "CAT"; }
 Cat::Cat(const Cat &instance) : Animal(instance) { *this = instance; }
 Cat &Cat::operator=(const Cat &rhs) {
   if (this != &rhs) {

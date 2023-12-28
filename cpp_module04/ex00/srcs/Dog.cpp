@@ -1,6 +1,6 @@
 #include "Dog.hpp"
 
-Dog::Dog(void) {}
+Dog::Dog(void) { type = "DOG"; }
 Dog::Dog(const Dog &instance) : Animal(instance) { *this = instance; }
 Dog &Dog::operator=(const Dog &rhs) {
   if (this != &rhs) {

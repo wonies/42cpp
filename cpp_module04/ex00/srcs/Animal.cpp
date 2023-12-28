@@ -14,4 +14,4 @@ Animal::~Animal(void) {}
 
 void Animal::makeSound(void) const { std::cout << "some Sound" << std::endl; }
 
-std::string Animal::getType(void) { return type; }
+std::string Animal::getType(void) const { return type; }
