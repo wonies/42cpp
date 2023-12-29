@@ -3,6 +3,7 @@
 
 #include "Animal.hpp"
 #include "Brain.hpp"
+
 class Dog : public Animal {
  public:
   Dog(void);
@@ -12,6 +13,7 @@ class Dog : public Animal {
   void makeSound(void) const;
   void brainAllocate(void) const;
   void brainSound(void) const;
+  void brainAlert(void) const;
 
  private:
   Brain *brain;

@@ -21,3 +21,5 @@ void Dog::makeSound(void) const { std::cout << "Bark!" << std::endl; }
 void Dog::brainAllocate(void) const { brain[0] = Brain("wonie"); }
 
 void Dog::brainSound(void) const { std::cout << "zzz" << std::endl; }
+
+void Dog::brainAlert(void) const { brain[0] = "konie"; }

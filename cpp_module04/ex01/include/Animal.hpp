@@ -16,6 +16,7 @@ class Animal {
   std::string getType(void) const;
   virtual void brainAllocate() const = 0;  // 순수 가상 함수로 선언
   virtual void brainSound() const = 0;
+  virtual void brainAlert(void) const = 0;
 };
 
 #endif

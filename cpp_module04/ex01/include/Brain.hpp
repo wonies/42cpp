@@ -12,10 +12,8 @@ class Brain {
   ~Brain(void);
   std::string getContent(void) const;
   Brain(const std::string &idea);
+  Brain &operator=(const std::string &str);
 };
 
-std::ostream &operator<<(std::ostream &os, const Brain &brain) {
-  os << brain.getContent();
-  k return os;
-}
+std::ostream &operator<<(std::ostream &os, const Brain &brain);
 #endif
