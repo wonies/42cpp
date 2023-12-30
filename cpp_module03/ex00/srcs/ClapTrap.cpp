@@ -1,9 +1,11 @@
 #include "ClapTrap.hpp"
 
-ClapTrap::ClapTrap(void) {}
+ClapTrap::ClapTrap(void) { std::cout << "🥚Base Constructor" << std::endl; }
 
 ClapTrap::ClapTrap(std::string _name)
-    : Name(_name), HitPoints(10), EnergyPoints(10), AttackDamage(10) {}
+    : Name(_name), HitPoints(10), EnergyPoints(10), AttackDamage(10) {
+  std::cout << "🥚Base Constructor" << std::endl;
+}
 
 ClapTrap::ClapTrap(const ClapTrap &ct)
     : Name(ct.Name),
@@ -24,7 +26,7 @@ ClapTrap &ClapTrap::operator=(const ClapTrap &ct) {
   return (*this);
 }
 
-ClapTrap::~ClapTrap(void) {}
+ClapTrap::~ClapTrap(void) { std::cout << "Base Destructor🥚" << std::endl; }
 
 void ClapTrap::attack(const std::string &target) {
   if (EnergyPoints <= 0 || HitPoints <= 0) {

@@ -3,13 +3,15 @@
 ScavTrap::ScavTrap(void) { std::cout << "🍳Derived Constructor" << std::endl; }
 
 ScavTrap::ScavTrap(const std::string _name) : ClapTrap(_name) {
-   std::cout << "🍳Derived "
-                     "Constructor\n\n------------------START OF THE "
-                     "GAME-------------------\n"
-                  << std::endl;
+  std::cout << "🍳Derived "
+               "Constructor\n\n------------------START OF THE "
+               "GAME-------------------\n"
+            << std::endl;
 }
 
-ScavTrap::ScavTrap(const ScavTrap &instance) :ClapTrap(instance) { *this = instance; };
+ScavTrap::ScavTrap(const ScavTrap &instance) : ClapTrap(instance) {
+  *this = instance;
+};
 
 ScavTrap &ScavTrap::operator=(const ScavTrap &rhs) {
   if (this != &rhs) {

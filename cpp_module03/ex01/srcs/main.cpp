@@ -1,7 +1,7 @@
 #include "ScavTrap.hpp"
 
 int main(void) {
-  ScavTrap shiriff("피카츄🐱");
+  ScavTrap shiriff("피카");
 
   shiriff.attack("🦊이브이");
   shiriff.attack("🐡야도란");

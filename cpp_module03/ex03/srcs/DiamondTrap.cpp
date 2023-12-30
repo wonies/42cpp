@@ -9,12 +9,20 @@ DiamondTrap::DiamondTrap(std::string _name)
       Name(_name) {
   std::cout << "💎Diamond_Trap_CONSTRUCTOR💎" << std::endl;
   std::cout << "💎Name: 💎" << Name << std::endl;
+  std::cout << std::endl;
 }
-DiamondTrap::DiamondTrap(DiamondTrap const &instance) : ClapTrap(instance), FragTrap(instance), ScavTrap(instance) { *this = instance; }
+
+DiamondTrap::DiamondTrap(DiamondTrap const &instance)
+    : ClapTrap(instance), FragTrap(instance), ScavTrap(instance) {
+  *this = instance;
+}
 
 DiamondTrap &DiamondTrap::operator=(const DiamondTrap &rhs) {
   if (this != &rhs) {
     ClapTrap::operator=(rhs);
+    FragTrap::operator=(rhs);
+    ScavTrap::operator=(rhs);
+    this->Name = rhs.Name;
   }
   return *this;
 }

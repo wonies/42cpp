@@ -80,4 +80,4 @@ void ClapTrap::beRepaired(unsigned int amount) {
 
 int ClapTrap::getHP(void) { return HitPoints; }
 
-void ClapTrap::setHP(int hp){HitPoints = hp;};
+void ClapTrap::setHP(int hp) { HitPoints = hp; };
