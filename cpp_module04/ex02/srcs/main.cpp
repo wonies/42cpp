@@ -2,7 +2,7 @@
 #include "Cat.hpp"
 #include "Dog.hpp"
 
-void leak() { system("leaks Brain"); }
+// void leak() { system("leaks Brain"); }
 int main(void) {
   const Animal* j = new Dog();
   const Animal* i = new Cat();
@@ -72,6 +72,6 @@ int main(void) {
 
   delete j;
   delete i;
-  leak();
+  // leak();
   return 0;
 }

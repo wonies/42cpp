@@ -29,7 +29,7 @@ Cat &Cat::operator=(const Cat &rhs) {
 
 Cat::~Cat(void) {
   std::cout << "\033[0;34m~냥냥이 소멸자~\033[0;30m" << std::endl;
-  delete brain;
+  if (brain) delete brain;
 }
 
 void Cat::makeSound(void) const { std::cout << "Meow!" << std::endl; }
