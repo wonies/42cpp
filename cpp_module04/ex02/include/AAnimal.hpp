@@ -8,10 +8,10 @@ class AAnimal {
   std::string type;
 
  public:
-  Animal(void);
-  Animal(const Animal &instance);
-  Animal &operator=(const Animal &rhs);
-  virtual ~Animal(void);
+  AAnimal(void);
+  AAnimal(const AAnimal &instance);
+  AAnimal &operator=(const AAnimal &rhs);
+  virtual ~AAnimal(void);
   virtual void makeSound(void) const = 0;
   virtual void brainAllocate() const = 0;
   virtual void brainSound() const = 0;

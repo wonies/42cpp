@@ -1,7 +1,7 @@
 #ifndef __DOG__H__
 #define __DOG__H__
 
-#include "Animal.hpp"
+#include "AAnimal.hpp"
 #include "Brain.hpp"
 
 class Dog : public AAnimal {

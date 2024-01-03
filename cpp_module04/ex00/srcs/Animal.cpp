@@ -12,7 +12,6 @@ Animal &Animal::operator=(const Animal &rhs) {
 }
 Animal::~Animal(void) {}
 
-// void Animal::makeSound(void) const { std::cout << "some Sound" << std::endl;
-// }
+void Animal::makeSound(void) const { std::cout << "some Sound" << std::endl; }
 
 std::string Animal::getType(void) const { return type; }

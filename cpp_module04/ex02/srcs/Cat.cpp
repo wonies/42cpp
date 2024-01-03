@@ -6,7 +6,7 @@ Cat::Cat(void) {
   std::cout << "\033[0;34m*냥냥이 생성자*\033[0;30m" << std::endl;
 }
 
-Cat::Cat(const Cat &instance) : Animal(instance) {
+Cat::Cat(const Cat &instance) : AAnimal(instance) {
   std::cout << "copy in\n";
   *this = instance;
 }

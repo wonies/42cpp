@@ -1,13 +1,13 @@
-#include "Animal.hpp"
+#include "AAnimal.hpp"
 #include "Cat.hpp"
 #include "Dog.hpp"
 
 // void leak() { system("leaks Brain"); }
 int main(void) {
-  const Animal* j = new Dog();
-  const Animal* i = new Cat();
+  const AAnimal* j = new Dog();
+  const AAnimal* i = new Cat();
   int animal_size = 100;
-  Animal* ani[animal_size];
+  AAnimal* ani[animal_size];
 
   for (int i = 0; i < animal_size; i++) {
     if (i < animal_size / 2)

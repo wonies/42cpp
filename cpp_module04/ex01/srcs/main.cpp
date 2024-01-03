@@ -72,6 +72,6 @@ int main(void) {
 
   delete j;
   delete i;
-  leak();
+  // leak();
   return 0;
 }

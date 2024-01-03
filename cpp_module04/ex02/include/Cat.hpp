@@ -1,7 +1,7 @@
 #ifndef __CAT__H__
 #define __CAT__H__
 
-#include "Animal.hpp"
+#include "AAnimal.hpp"
 #include "Brain.hpp"
 
 class Cat : public AAnimal {

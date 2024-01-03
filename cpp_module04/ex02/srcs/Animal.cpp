@@ -1,21 +1,21 @@
-#include "Animal.hpp"
+#include "AAnimal.hpp"
 
-Animal::Animal(void) {
-  std::cout << "\033[0;31m*Animal 생성자*\033[0;30m" << std::endl;
+AAnimal::AAnimal(void) {
+  std::cout << "\033[0;31m*AAnimal 생성자*\033[0;30m" << std::endl;
 }
-Animal::Animal(const Animal &instance) : type(instance.type) {
+AAnimal::AAnimal(const AAnimal &instance) : type(instance.type) {
   *this = instance;
 }
-Animal &Animal::operator=(const Animal &rhs) {
+AAnimal &AAnimal::operator=(const AAnimal &rhs) {
   if (this != &rhs) {
     this->type = rhs.type;
   }
   return *this;
 }
-Animal::~Animal(void) {
-  std::cout << "\033[0;31m~Animal 소멸자~\033[0;30m" << std::endl;
+AAnimal::~AAnimal(void) {
+  std::cout << "\033[0;31m~AAnimal 소멸자~\033[0;30m" << std::endl;
 }
 
-void Animal::makeSound(void) const { std::cout << "some Sound" << std::endl; }
+void AAnimal::makeSound(void) const { std::cout << "some Sound" << std::endl; }
 
-std::string Animal::getType(void) const { return type; }
+std::string AAnimal::getType(void) const { return type; }
