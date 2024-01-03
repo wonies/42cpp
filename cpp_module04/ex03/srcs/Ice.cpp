@@ -1,6 +1,6 @@
 #include "Ice.hpp"
 
-#include "Icharacter.hpp"
+#include "ICharacter.hpp"
 
 Ice::Ice(void) : AMateria("ice") {}
 

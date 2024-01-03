@@ -1,7 +1,7 @@
 #ifndef ICE_HPP
 #define ICE_HPP
 
-#include "Amateria.hpp"
+#include "AMateria.hpp"
 
 class ICharacter;
 

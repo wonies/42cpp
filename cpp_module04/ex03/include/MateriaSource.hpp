@@ -1,7 +1,7 @@
 #ifndef MATERIASOURCE_HPP
 #define MATERIASOURCE_HPP
 
-#include "ImateriaSource.hpp"
+#include "IMateriaSource.hpp"
 
 class Ice;
 class Cure;

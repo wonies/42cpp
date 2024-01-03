@@ -3,7 +3,7 @@
 
 #include <iostream>
 
-#include "Amateria.hpp"
+#include "AMateria.hpp"
 
 class AMateria;
 
