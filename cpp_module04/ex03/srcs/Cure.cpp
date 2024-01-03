@@ -1,6 +1,6 @@
 #include "Cure.hpp"
 
-#include "ICharacter.hpp"
+#include "Icharacter.hpp"
 
 Cure::Cure(void) : AMateria("cure") {}
 

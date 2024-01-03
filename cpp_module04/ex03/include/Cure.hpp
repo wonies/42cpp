@@ -1,8 +1,8 @@
 #ifndef CURE_HPP
 #define CURE_HPP
 
-#include "AMateria.hpp"
-#include "ICharacter.hpp"
+#include "Amateria.hpp"
+#include "Icharacter.hpp"
 
 class ICharacter;
 

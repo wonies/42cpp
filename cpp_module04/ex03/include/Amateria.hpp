@@ -3,7 +3,7 @@
 
 #include <iostream>
 
-#include "ICharacter.hpp"
+#include "Icharacter.hpp"
 #define slot 4
 
 class ICharacter;
