@@ -1,20 +1,26 @@
 #include "Ice.hpp"
 
-Ice::Ice(void) : Amateria("ice") {}
+#include "ICharacter.hpp"
 
-Ice::Ice(Ice const &instance) : Amateria("ice") { *this = instance; }
+Ice::Ice(void) : AMateria("ice") {}
+
+Ice::Ice(Ice const &instance) : AMateria("ice") { *this = instance; }
 
 Ice &Ice::operator=(const Ice &rhs) {
   if (this != &rhs) {
-    this.type = rhs.type;
+    this->_type = rhs._type;
   }
   return *this;
 }
 
 Ice::~Ice(void) {}
 
-Amateria *Ice::clone() const { return *this; }
+AMateria *Ice::clone() const {
+  AMateria *ice = new Ice();
+  return ice;
+}
 
 void Ice::use(ICharacter &target) {
-  std::cout << "* shoots an ice bolt at " << target.name << " *" << std::endl;
+  std::cout << "* shoots an ice bolt at " << target.getName() << " *"
+            << std::endl;
 }

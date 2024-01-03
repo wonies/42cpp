@@ -1,20 +1,25 @@
 #include "Cure.hpp"
 
-Cure::Cure(void) : Amateria("cure") {}
+#include "ICharacter.hpp"
 
-Cure::Cure(Cure const &instance) : Amateria("cure") { *this = instance; }
+Cure::Cure(void) : AMateria("cure") {}
+
+Cure::Cure(Cure const &instance) : AMateria("cure") { *this = instance; }
 
 Cure &Cure::operator=(Cure const &rhs) {
   if (this != &rhs) {
-    this.type = rhs.type;
+    _type = rhs._type;
   }
   return *this;
 }
 
 Cure::~Cure(void) {}
 
-Amateria *Cure::clone() const { return *this; }
+AMateria *Cure::clone() const {
+  AMateria *cure = new Cure();
+  return cure;
+}
 
 void Cure::use(ICharacter &target) {
-  std::cout << "* heals " << target.name << "'s wounds *" << std::endl;
+  std::cout << "* heals " << target.getName() << "'s wounds *" << std::endl;
 }

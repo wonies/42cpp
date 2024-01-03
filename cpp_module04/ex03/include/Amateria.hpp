@@ -4,18 +4,19 @@
 #include <iostream>
 
 #include "ICharacter.hpp"
+#define slot 4
 
 class ICharacter;
 
-class Amateria {
+class AMateria {
  public:
-  Amateria(void);
-  Amateria(std::string const &type);
-  Amateria(Amateria const &instance);
-  Amateria &operator=(Amateria const &rhs);
-  virtual ~Amateria(void);
+  AMateria(void);
+  AMateria(std::string const &type);
+  AMateria(AMateria const &instance);
+  AMateria &operator=(AMateria const &rhs);
+  virtual ~AMateria(void);
   std::string const &getType() const;
-  virtual Amateria *clone() const = 0;
+  virtual AMateria *clone() const = 0;
   virtual void use(ICharacter &target) = 0;
 
  protected:

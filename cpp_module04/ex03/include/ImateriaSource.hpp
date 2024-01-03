@@ -1,15 +1,13 @@
 #ifndef IMATERIASOURCE_HPP
 #define IMATERIASOURCE_HPP
 
+#include "AMateria.hpp"
+
 class IMateriaSource {
  public:
-  IMateriaSource(void);
-  IMateriaSource(**replace parameters **);
-  IMateriaSource(IMateriaSource const &instance);
-  IMateriaSource &operator=(IMateriaSource const &rhs);
-  virtual ~IMateriaSource(void);
-  virtual void learnMateria(Amateria *) = 0;
-  virtual Amateria *createMateria(std::string const &type) = 0;
+  virtual ~IMateriaSource(void){};
+  virtual void learnMateria(AMateria *) = 0;
+  virtual AMateria *createMateria(std::string const &type) = 0;
 
  private:
 };

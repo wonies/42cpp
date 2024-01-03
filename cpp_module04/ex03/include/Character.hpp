@@ -1,9 +1,7 @@
 #ifndef CHARACTER_HPP
 #define CHARACTER_HPP
 
-#include "Amateria.hpp"
-
-#define slot 4
+#include "AMateria.hpp"
 
 class Character : public ICharacter {
  public:
@@ -13,13 +11,13 @@ class Character : public ICharacter {
   Character &operator=(Character const &rhs);
   ~Character(void);
   std::string const &getName() const;
-  void equip(Amateria *m);
+  void equip(AMateria *m);
   void unequip(int idx);
   void use(int idx, ICharacter &target);
+  void deleteInven(int idx);
 
  private:
-  Amateria *inventory[slot];
-  std::string _name;
+  AMateria *inventory[slot];
 };
 
 #endif
