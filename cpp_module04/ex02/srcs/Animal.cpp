@@ -16,6 +16,4 @@ AAnimal::~AAnimal(void) {
   std::cout << "\033[0;31m~AAnimal 소멸자~\033[0;30m" << std::endl;
 }
 
-void AAnimal::makeSound(void) const { std::cout << "some Sound" << std::endl; }
-
 std::string AAnimal::getType(void) const { return type; }

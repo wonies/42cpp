@@ -10,8 +10,8 @@ int main() {
   const Animal* meta = new Animal();
   const Animal* j = new Dog();
   const Animal* i = new Cat();
-  const WrongAnimal* wrongani = new WrongAnimal();
-  const WrongAnimal* wrongcat = new WrongCat();
+  // const WrongAnimal* wrongani = new WrongAnimal();
+  // const WrongAnimal* wrongcat = new WrongCat();
 
   std::cout << "----------Class TYPE---------" << std::endl;
   std::cout << j->getType() << " " << std::endl;
@@ -22,16 +22,17 @@ int main() {
   meta->makeSound();
 
   // leak();
-  std::cout << "\n------Wrong!------\nSituation that is not "
-               "VIRTUAL\n------------------"
-            << std::endl;
-  wrongcat->makeSound();
-  wrongani->makeSound();
+  // std::cout << "\n------Wrong!------\nSituation that is not "
+  //              "VIRTUAL\n------------------"
+  //           << std::endl;
+  // wrongcat->makeSound();
+  // wrongani->makeSound();
+
   delete meta;
   delete i;
   delete j;
-  delete wrongani;
-  delete wrongcat;
+  // delete wrongani;
+  // delete wrongcat;
 
   return 0;
 }
