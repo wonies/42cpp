@@ -1,4 +1,4 @@
-#include "AMateria.hpp"
+#include "Amateria.hpp"
 
 AMateria::AMateria(void) {}
 
