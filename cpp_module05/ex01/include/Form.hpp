@@ -31,4 +31,6 @@ class Form {
   unsigned int _execute;
 };
 
+std::ostream &operator<<(std::ostream &os, const Form &obj);
+
 #endif

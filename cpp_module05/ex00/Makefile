@@ -16,7 +16,7 @@ all: $(OBJ_DIR) $(NAME)
 $(NAME): $(OBJS)
 	@echo "---------------------------"
 	@echo "|                         |"
-	@echo "|           🗻             |"
+	@echo "|           🗻            |"
 	@echo "|                         |"
 	@echo "---------------------------"
 	@$(CXX) $(CXXFLAGS) $^ -o $(NAME)
