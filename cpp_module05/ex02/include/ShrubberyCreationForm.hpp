@@ -7,7 +7,7 @@
 class ShrubberyCreationForm : public AForm {
  public:
   ShrubberyCreationForm(void);
-  ShrubberyCreationForm(**replace parameters **);
+  ShrubberyCreationForm(std::string document);
   ShrubberyCreationForm(ShrubberyCreationForm const &instance);
   ShrubberyCreationForm &operator=(ShrubberyCreationForm const &rhs);
   ~ShrubberyCreationForm(void);
