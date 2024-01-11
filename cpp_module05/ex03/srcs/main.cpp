@@ -1,5 +1,6 @@
 #include "AForm.hpp"
 #include "Bureaucrat.hpp"
+#include "Intern.hpp"
 #include "PresidentialPardonForm.hpp"
 #include "RobotomyRequestForm.hpp"
 #include "ShrubberyCreationForm.hpp"
@@ -7,11 +8,13 @@
 void test1(void);
 void test2(void);
 void test3(void);
+void test4(void);
 
 int main(void) {
   test1();
   test2();
   test3();
+  test4();
 
   return 0;
 }
@@ -47,4 +50,11 @@ void test3(void) {
   } catch (std::exception& e) {
     std::cerr << "Error: " << e.what() << std::endl;
   }
+}
+
+void test4(void) {
+  std::cout << "\n\n---------------test4-----------------\n\n";
+  Intern someRandomIntern;
+  Form* rrf;
+  rrf = someRandomIntern.makeForm("robotomy request", "Bender");
 }

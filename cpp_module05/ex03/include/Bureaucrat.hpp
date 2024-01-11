@@ -4,7 +4,7 @@
 #include <exception>
 #include <iostream>
 
-class AForm;
+class Form;
 
 class Bureaucrat {
  public:
@@ -24,8 +24,8 @@ class Bureaucrat {
   unsigned int getGrade(void) const;
   void setUpGrade(void);
   void setDownGrade(void);
-  void signForm(const AForm &forms);
-  void executeForm(AForm const &form);
+  void signForm(const Form &forms);
+  void executeForm(Form const &form);
 
  private:
   Bureaucrat(void);

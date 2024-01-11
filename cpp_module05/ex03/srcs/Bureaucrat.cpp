@@ -36,7 +36,7 @@ void Bureaucrat::setDownGrade(void) {
   if (_grade > 150) throw(Bureaucrat::GradeTooLowException());
 }
 
-void Bureaucrat::signForm(const AForm &forms) {
+void Bureaucrat::signForm(const Form &forms) {
   if (forms.getSign() > 0) {
     std::cout << _name << " signed " << forms.getName() << std::endl;
   } else {
@@ -51,7 +51,7 @@ void Bureaucrat::signForm(const AForm &forms) {
   }
 }
 
-void Bureaucrat::executeForm(const AForm &form) {
+void Bureaucrat::executeForm(const Form &form) {
   if (form.execute(*this))
     std::cout << getName() << " execute " << form.getName() << std::endl;
   else

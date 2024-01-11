@@ -3,13 +3,13 @@
 
 #include "Bureaucrat.hpp"
 
-class AForm {
+class Form {
  public:
-  AForm(void);
-  AForm(std::string name, unsigned int authorize, unsigned int execute);
-  AForm(AForm const &instance);
-  AForm &operator=(AForm const &rhs);
-  virtual ~AForm(void);
+  Form(void);
+  Form(std::string name, unsigned int authorize, unsigned int execute);
+  Form(Form const &instance);
+  Form &operator=(Form const &rhs);
+  virtual ~Form(void);
   void beSigned(Bureaucrat &);
   virtual bool execute(Bureaucrat const &executor) const = 0;
   std::string getName() const;
@@ -35,6 +35,6 @@ class AForm {
   unsigned int _execute;
 };
 
-std::ostream &operator<<(std::ostream &os, const AForm &obj);
+std::ostream &operator<<(std::ostream &os, const Form &obj);
 
 #endif

@@ -20,11 +20,11 @@ AForm::~AForm() {}
 
 void AForm::beSigned(Bureaucrat &auth) {
   if (_authorize > 150)
-    throw(Form::GradeTooLowException());
+    throw(AForm::GradeTooLowException());
   else if (_authorize < 1)
-    throw(Form::GradeTooHighException());
+    throw(AForm::GradeTooHighException());
   if (_authorize > auth.getGrade())
-    throw(Form::GradeTooLowException());
+    throw(AForm::GradeTooLowException());
   else {
     _sign = 1;
   }

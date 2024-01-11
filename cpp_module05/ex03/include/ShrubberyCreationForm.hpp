@@ -8,7 +8,7 @@
 #include "AForm.hpp"
 class Bureaucrat;
 
-class ShrubberyCreationForm : public AForm {
+class ShrubberyCreationForm : public Form {
  public:
   ShrubberyCreationForm(void);
   ShrubberyCreationForm(std::string document);

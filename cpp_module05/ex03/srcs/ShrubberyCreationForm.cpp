@@ -5,18 +5,18 @@
 ShrubberyCreationForm::ShrubberyCreationForm(void) {}
 
 ShrubberyCreationForm::ShrubberyCreationForm(std::string name)
-    : AForm(name, 145, 137) {}
+    : Form(name, 145, 137) {}
 
 ShrubberyCreationForm::ShrubberyCreationForm(
     const ShrubberyCreationForm &instance)
-    : AForm(getName(), 145, 137) {
+    : Form(getName(), 145, 137) {
   *this = instance;
 }
 
 ShrubberyCreationForm &ShrubberyCreationForm::operator=(
     ShrubberyCreationForm const &rhs) {
   if (this != &rhs) {
-    AForm::operator=(rhs);
+    Form::operator=(rhs);
   }
   return *this;
 }
@@ -34,7 +34,7 @@ bool ShrubberyCreationForm::execute(Bureaucrat const &executor) const {
   if (executor.getGrade() <= 145 && executor.getGrade() <= 137) {
     outputFile << shrub_trees;
 
-    std::cout << executor.getName() << " executed " << AForm::getName()
+    std::cout << executor.getName() << " executed " << Form::getName()
               << std::endl;
     return 1;
   } else {
