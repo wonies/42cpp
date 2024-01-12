@@ -7,7 +7,7 @@ static const std::string formTypes[] = {
 
 Form *(Intern::*Intern::forms[3])(const std::string) = {
     &Intern::getShruberry, &Intern::getRobo, &Intern::getPardon};
-
+// static _ 인턴 소속의 함수포인터 //
 Intern::Intern(void) {}
 
 Intern::Intern(Intern const &instance) { *this = instance; }
@@ -21,17 +21,12 @@ Intern &Intern::operator=(const Intern &rhs) {
 Intern ::~Intern() {}
 
 Form *Intern::makeForm(std::string formType, std::string target) {
-  //   formCreators[0] = &Intern::getShruberry;
-  //   formCreators[1] = &Intern::getRobo;
-  //   formCreators[2] = &Intern::getPardon;
-
   for (size_t i = 0; i < sizeof(formTypes) / sizeof(formTypes[0]); ++i) {
     if (formType == formTypes[i]) {
       std::cout << "Intern creates " << formType << std::endl;
       return (this->*forms[i])(target);
     }
   }
-
   std::cout << "Error: Unknown form type." << std::endl;
   return nullptr;
 }
@@ -47,4 +42,3 @@ Form *Intern::getRobo(const std::string fname) {
 Form *Intern::getPardon(const std::string fname) {
   return new PresidentialPardonForm(fname);
 }
-// Form Intern::*makeForm(std::string request, std::string target) {}
