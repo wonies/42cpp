@@ -7,7 +7,7 @@ static const std::string formTypes[] = {
 
 Form *(Intern::*Intern::forms[3])(const std::string) = {
     &Intern::getShruberry, &Intern::getRobo, &Intern::getPardon};
-// static _ 인턴 소속의 함수포인터 //
+
 Intern::Intern(void) {}
 
 Intern::Intern(Intern const &instance) { *this = instance; }
@@ -23,7 +23,7 @@ Intern ::~Intern() {}
 Form *Intern::makeForm(std::string formType, std::string target) {
   for (size_t i = 0; i < sizeof(formTypes) / sizeof(formTypes[0]); ++i) {
     if (formType == formTypes[i]) {
-      std::cout << "Intern creates " << formType << std::endl;
+      std::cout << "Intern creates " << formType << ㅎstd::endl;
       return (this->*forms[i])(target);
     }
   }

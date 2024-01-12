@@ -23,7 +23,7 @@ void Form::beSigned(Bureaucrat &auth) {
     throw(Form::GradeTooLowException());
   else if (_authorize < 1)
     throw(Form::GradeTooHighException());
-  if (_authorize > auth.getGrade())
+  if (_authorize < auth.getGrade())
     throw(Form::GradeTooLowException());
   else {
     _sign = 1;

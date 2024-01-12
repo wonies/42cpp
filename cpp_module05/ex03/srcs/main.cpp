@@ -57,4 +57,5 @@ void test4(void) {
   Intern someRandomIntern;
   Form* rrf;
   rrf = someRandomIntern.makeForm("robotomy request", "Bender");
+  delete rrf;
 }
