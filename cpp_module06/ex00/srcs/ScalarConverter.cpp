@@ -24,13 +24,18 @@ ScalarConverter &ScalarConverter::operator=(const ScalarConverter &rhs) {
 ScalarConverter::~ScalarConverter(void) {}
 
 void ScalarConverter::convert(std::string input) {
-  _conv = strtod(input.c_str(), &_endptr);
-  Convert valid(_conv);
-  std::cout << _conv << std::endl;
-  valid.validPrint(input);
-  if (_endptr != '\0') {
-    valid.validDigit();
-  }
+  // Convert scalar(input);
+
+  // scalar._conv = strtod(input.c_str(), &_endptr);
+  // std::cout << _conv << std::endl;
+  // valid.validPrint(input);
+  // _conv = strtod(input.c_str(), &_endptr);
+
+  Convert scalar(input);
+  scalar.scalarType(input);
+  // if (_endptr != '\0') {
+  //   valid.validDigit();
+  // }
   char _char = static_cast<char>(_conv);
   std::cout << "check : " << _endptr << std::endl;
   int _int = static_cast<int>(_conv);

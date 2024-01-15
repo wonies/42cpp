@@ -5,7 +5,7 @@
 
 #include <iostream>
 
-class Convert;
+// class Convert;
 
 class ScalarConverter {
  public:
