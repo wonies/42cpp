@@ -75,14 +75,33 @@ bool Convert::validDigit() {
 
 int Convert::checkType(std::string input) {
   _dinput = strtod(input.c_str(), &_endptr);
+  int dotfinds = -1;
+  dotfinds = input.find(".");
+  std::cout << "double input : " << _dinput << std::endl;
+  std::cout << "----1----" << std::endl;
+  std::cout << "dot : " << dotfinds << std::endl;
+  std::cout << "end ptr : " << *_endptr << std::endl;
+  std::cout << _dinput << std::endl;
   if (input != _endptr) {
+    std::cout << "----2----" << std::endl;
+
+    // if (input.find("nan") != std::string::npos ||
+    //     input.find("inf") != std::string::npos) {
+    //   std::cout << "nan or ...." << std::endl;
+    //   return type_literal;
+    // }
+
     if (*_endptr == '\0') {
-      if (_dinput <= 2147483647 && _dinput >= -2147483648)
+      std::cout << "----3----" << std::endl;
+
+      if (_dinput == 0 ||
+          (_dinput <= 2147483647 && _dinput >= -2147483648 && dotfinds == -1)) {
+        std::cout << "int" << std::endl;
         return type_int;
-      else
+      } else if (dotfinds == -1)
         return type_double;
-    } else if (*_endptr == 'f' && ++*_endptr == '\0')
-      return type_double;
+    } else if (*_endptr == 'f' && ++*_endptr == '\0' && dotfinds != -1)
+      return type_float;
     else if (input.size() == 1)
       return type_char;
     else
@@ -92,8 +111,9 @@ int Convert::checkType(std::string input) {
 }
 
 void Convert::scalarType(std::string input) {
-  type_define type = checkType(input);
+  int type = checkType(input);
   _input = input;
+  std::cout << "Type : " << type << std::endl;
   if (type == type_int)
     castInt();
   else if (type == type_float)
@@ -108,12 +128,21 @@ void Convert::scalarType(std::string input) {
 
 void Convert::castInt(void) {
   int _int = static_cast<int>(_dinput);
+  std::cout << "char : Non displayable" << std::endl;
+  std::cout << "cast Int : " << _int << std::endl;
   std::cout << std::fixed << std::setprecision(1);
-  float _float = static_cast<float>(_int);
-  std::cout.unsetf(std::ios_base::fixed);
-  std::cout.precision(1);
-  double _double = static_cast<double>(_int);
-  caseIntShout();
+  float _float = static_cast<float>(_dinput);
+  std::cout << "cast Float : " << _float << "f" << std::endl;
+  std::cout << "cast Double : " << _double << std::endl;
+  // double _double = static_cast<double>(_dinput);
+
+  // std::cout.unsetf(std::ios_base::fixed);
+  // std::cout.precision(1);
+  // (void)_int;
+  // (void)_float;
+  // (void)_double;
+
+  // caseIntShout();
 }
 
 void Convert::caseIntShout(void) {
@@ -126,12 +155,16 @@ void Convert::caseIntShout(void) {
 void Convert::castFloat(void) {
   std::cout << std::fixed << std::setprecision(1);
   float _float = static_cast<float>(_dinput);
-  char _char = static_cast<char>(_float);
+  char _char = static_cast<char>(_dinput);
   std::cout.unsetf(std::ios_base::fixed);
   std::cout.precision(1);
-  int _int = static_cast<int>(_float);
-  double _double = static_cast<double>(_float);
-  caseFloatShout();
+  int _int = static_cast<int>(_dinput);
+  std::cout << "char : " << _char << std::endl;
+  std::cout << "int : " << _int << std::endl;
+  std::cout << "float : " << _float << "f" << std::endl;
+  std::cout << "double : " << _dinput << std::endl;
+
+  // caseFloatShout();
 }
 
 void Convert::caseFloatShout(void) {
@@ -142,20 +175,31 @@ void Convert::caseFloatShout(void) {
 }
 
 void Convert::castDouble(void) {
-  double _double = static_cast<double>(_dinput);
-  std::cout << std::fixed << std::setprecision(1);
-  float _float = static_cast<float>(_dinput);
-  std::cout.unsetf(std::ios_base::fixed);
-  std::cout.precision(1);
-  int _int = static_cast<int>(_float);
-  caseDoubleShout();
+  double _double = _dinput;
+  std::cout << "double : " << _double << std::endl;
+  // double _double = static_cast<double>(_dinput);
+  // std::cout << std::fixed << std::setprecision(1);
+  float _float = static_cast<float>(_double);
+  std::cout << "flaot : " << _float << std::endl;
+  // std::cout.unsetf(std::ios_base::fixed);
+  // std::cout.precision(1);
+  int _int = static_cast<int>(_double);
+  std::cout << "int : " << _int << std::endl;
+
+  std::cout << "char : "
+            << "impossible" << std::endl;
+  std::cout << "int : " << _int << std::endl;
+  std::cout << "float : " << _float << "f" << std::endl;
+  std::cout << "double : " << _double << std::endl;
+  // caseDoubleShout();
 }
 
 void Convert::caseDoubleShout(void) {
+  std::cout << "case Double shout" << _double << std::endl;
+
   std::cout << "char : "
             << "impossible" << std::endl;
-  std::cout << "int : "
-            << "impossible" << std::endl;
+  std::cout << "int : " << _int << std::endl;
   std::cout << "float : " << _float << "f" << std::endl;
   std::cout << "double : " << _double << std::endl;
 }

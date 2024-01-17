@@ -26,13 +26,13 @@ ScalarConverter::~ScalarConverter(void) {}
 void ScalarConverter::convert(std::string input) {
   // Convert scalar(input);
 
-  // scalar._conv = strtod(input.c_str(), &_endptr);
   // std::cout << _conv << std::endl;
   // valid.validPrint(input);
   // _conv = strtod(input.c_str(), &_endptr);
 
-  Convert scalar(input);
+  Convert scalar;
   scalar.scalarType(input);
+  _conv = strtod(input.c_str(), &_endptr);
   // if (_endptr != '\0') {
   //   valid.validDigit();
   // }
