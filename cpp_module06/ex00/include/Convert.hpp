@@ -21,8 +21,6 @@ class Convert {
   Convert(Convert const &instance);
   Convert &operator=(Convert const &rhs);
   ~Convert(void);
-  bool validDigit(void);
-  bool validPrint(std::string input);
   void scalarType(std::string input);
   int checkType(std::string input);
   void castInt(void);
@@ -30,10 +28,7 @@ class Convert {
   void castDouble(void);
   void castChar(void);
   void caseLiteral(void);
-  void caseIntShout(void);
-  void caseFloatShout(void);
-  void caseDoubleShout(void);
-  void caseCharShout(void);
+  bool charInput(void);
 
  private:
   char *_endptr;
