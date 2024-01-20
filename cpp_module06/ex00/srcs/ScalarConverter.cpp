@@ -24,27 +24,6 @@ ScalarConverter &ScalarConverter::operator=(const ScalarConverter &rhs) {
 ScalarConverter::~ScalarConverter(void) {}
 
 void ScalarConverter::convert(std::string input) {
-  // Convert scalar(input);
-
-  // std::cout << _conv << std::endl;
-  // valid.validPrint(input);
-  // _conv = strtod(input.c_str(), &_endptr);
-
   Convert scalar;
   scalar.scalarType(input);
-  _conv = strtod(input.c_str(), &_endptr);
-  // if (_endptr != '\0') {
-  //   valid.validDigit();
-  // }
-  char _char = static_cast<char>(_conv);
-  std::cout << "check : " << _endptr << std::endl;
-  int _int = static_cast<int>(_conv);
-  std::cout << "check : " << _endptr << std::endl;
-
-  float _float = static_cast<float>(_conv);
-  std::cout << "check : " << _endptr << std::endl;
-  std::cout << "main_char: " << _char << std::endl;
-  std::cout << "main_int: " << _int << std::endl;
-  std::cout << "main_float: " << _float << std::endl;
-  std::cout << "main_double: " << _conv << std::endl;
 }

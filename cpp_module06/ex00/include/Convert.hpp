@@ -13,6 +13,14 @@ enum type_define {
   type_literal,
 };
 
+enum type_err {
+  err_overflow = 0,
+  err_charoverflow,
+  err_nan,
+  err_inf,
+
+};
+
 class Convert {
  public:
   Convert(void);
@@ -22,16 +30,22 @@ class Convert {
   Convert &operator=(Convert const &rhs);
   ~Convert(void);
   void scalarType(std::string input);
-  int checkType(std::string input);
+  int checkType();
   void castInt(void);
   void castFloat(void);
   void castDouble(void);
   void castChar(void);
   void caseLiteral(void);
   bool charInput(void);
+  bool checkInt(void);
+  bool checkFloat(void);
+  bool checkChar(void);
+  bool checkDouble(void);
+  bool pseudo(void);
+  void castPseudo(void);
 
  private:
-  char *_endptr;
+  char *_end;
   double _dinput;
   int _int;
   float _float;
@@ -39,6 +53,8 @@ class Convert {
   double _double;
   unsigned int c;
   std::string _input;
+  int errChar;
+  int errInt;
 };
 
 #endif

@@ -13,59 +13,25 @@ Convert &Convert::operator=(Convert const &rhs) {
 Convert::~Convert(void) {}
 
 Convert::Convert(double input) : _dinput(input) {}
-bool Convert::charInput(void) {
-  if (_input.length() == 1 && _endptr != '\0') {
-    c = _input[0] += 32;
-    int _int = static_cast<int>(c);
-    float _float = static_cast<float>(c);
-    double _double = static_cast<double>(c);
-    std::cout << "char : " << c << std::endl;
-    std::cout << "int : " << _int << std::endl;
-    std::cout << "float : " << _float << std::endl;
-    std::cout << "double : " << _double << std::endl;
-    return 1;
-  }
-  return 0;
-}
 
-int Convert::checkType(std::string input) {
-  _dinput = strtod(input.c_str(), &_endptr);
-  std::cout << "input : " << input << std::endl;
-  int dotfinds = -1;
-  dotfinds = input.find(".");
-  std::cout << "double input : " << _dinput << std::endl;
-  std::cout << "----1----" << std::endl;
-  std::cout << "dot : " << dotfinds << std::endl;
-  std::cout << "end ptr : " << *_endptr << std::endl;
-  std::cout << _dinput << std::endl;
-  if (input.find("nan")) std::cout << "nan!!" << std::endl;
-  if (charInput()) return type_char;
-
-  if (input != _endptr) {
-    if (*_endptr == '\0') {
-      if (_dinput == 0 ||
-          (_dinput <= 2147483647 && _dinput >= -2147483648 && dotfinds == -1)) {
-        std::cout << "int" << std::endl;
-        return type_int;
-      } else if (dotfinds == -1)
-        return type_double;
-    } else if (*_endptr == 'f' && dotfinds != -1) {
-      ++*_endptr;
-      if (*_endptr == '\0') return type_float;
-    } else if (input.size() == 1)
-      return type_char;
-    else {
-      return type_literal;
-    }
-  }
-  return 0;
+int Convert::checkType(void) {
+  if (checkInt())
+    return type_int;
+  else if (checkFloat())
+    return type_float;
+  else if (checkDouble())
+    return type_double;
+  else if (checkChar())
+    return type_char;
+  return type_literal;
 }
 
 void Convert::scalarType(std::string input) {
   _input = input;
-  int type = checkType(input);
-  std::cout << "Type : " << type << std::endl;
-  if (type == type_int)
+  int type = checkType();
+  if (pseudo())
+    castPseudo();
+  else if (type == type_int)
     castInt();
   else if (type == type_float)
     castFloat();
@@ -77,53 +43,149 @@ void Convert::scalarType(std::string input) {
     caseLiteral();
 }
 
-void Convert::castInt(void) {
-  int _int = static_cast<int>(_dinput);
-  std::cout << "char : Non displayable" << std::endl;
-  std::cout << "cast Int : " << _int << std::endl;
-  std::cout << std::fixed << std::setprecision(1);
-  float _float = static_cast<float>(_dinput);
-  std::cout << "cast Float : " << _float << "f" << std::endl;
-  std::cout << "cast Double : " << _dinput << std::endl;
-}
-
-void Convert::castFloat(void) {
-  std::cout << std::fixed << std::setprecision(1);
-  float _float = static_cast<float>(_dinput);
-  char _char = static_cast<char>(_dinput);
-  std::cout.unsetf(std::ios_base::fixed);
-  std::cout.precision(1);
-  int _int = static_cast<int>(_dinput);
-  std::cout << "char : " << _char << std::endl;
-  std::cout << "int : " << _int << std::endl;
-  std::cout << "float : " << _float << "f" << std::endl;
-  std::cout << "double : " << _dinput << std::endl;
-}
-
-void Convert::castDouble(void) {
-  double _double = _dinput;
-  float _float = static_cast<float>(_double);
-  int _int = static_cast<int>(_double);
-  if (_input == "nan" || _dinput < 2147483647 || _dinput > -2147483648) {
-    std::cout << "char : "
-              << "impossible" << std::endl;
-    std::cout << "int : "
-              << "impossible" << std::endl;
-    std::cout << "float : " << _float << "f" << std::endl;
-    std::cout << "double : " << _dinput << std::endl;
-    return;
+bool Convert::pseudo(void) {
+  double temp = strtod(_input.c_str(), NULL);
+  const double INF = std::numeric_limits<double>::infinity();
+  if (temp > CHAR_MAX || temp < CHAR_MIN) errChar = -114;
+  if (temp == 0) {
+    errChar = -114;
   }
-  std::cout << "char : "
-            << "impossible" << std::endl;
+  if (isnan(temp) || temp == INF || temp == -INF)
+    return 1;
+  else
+    return 0;
+}
+
+void Convert::castPseudo(void) {
+  double temp = strtod(_input.c_str(), NULL);
+  _float = static_cast<float>(temp);
+  _double = temp;
+  std::cout << std::showpoint << std::fixed << std::setprecision(1);
+  std::cout << "char : impossible" << std::endl;
+  std::cout << "int : impossible" << std::endl;
+  std::cout << "float : " << _float << "f" << std::endl;
+  std::cout << "double : " << _double << std::endl;
+}
+
+bool Convert::checkInt(void) {
+  *_end = '\0';
+  errChar = 0;
+  errInt = 0;
+  long temp = strtol(_input.c_str(), &_end, 10);
+  if (temp > CHAR_MAX || temp < CHAR_MIN) errChar = -114;
+  if (temp > INT_MAX || temp < INT_MIN) {
+    errInt = -114;
+    return 0;
+  }
+  if (_end != _input.c_str() && *_end == 0) {
+    _int = static_cast<int>(temp);
+    return 1;
+  }
+  return 0;
+}
+
+bool Convert::checkFloat(void) {
+  float temp = strtof(_input.c_str(), &_end);
+
+  if (_end != _input.c_str() && *_end == 'f' && *(_end + 1) == 0) {
+    _float = static_cast<float>(temp);
+    return 1;
+  }
+  return 0;
+}
+
+bool Convert::checkDouble(void) {
+  double temp = strtod(_input.c_str(), &_end);
+
+  if (_end != _input.c_str() && *_end == 0) {
+    _double = static_cast<double>(temp);
+    return 1;
+  }
+  return 0;
+}
+
+bool Convert::checkChar(void) {
+  if (_input.size() == 1) {
+    _char = static_cast<char>(_input[0]);
+    return 1;
+  } else if (_input.size() == 0) {
+    _char = '\0';
+    return 1;
+  }
+  return 0;
+}
+
+void Convert::castInt(void) {
+  _char = static_cast<char>(_int);
+  _float = static_cast<float>(_int);
+  _double = static_cast<double>(_int);
+  std::cout << std::showpoint << std::fixed << std::setprecision(1);
+  if (errChar == -114)
+    std::cout << "char : Non displayable" << std::endl;
+  else
+    std::cout << "char : " << _char << std::endl;
   std::cout << "int : " << _int << std::endl;
   std::cout << "float : " << _float << "f" << std::endl;
   std::cout << "double : " << _double << std::endl;
 }
 
-void Convert::castChar(void) {
-  std::cout << "_input : " << _input[0] << std::endl;
-  c = (_input[0] += 32);
-  std::cout << "char : " << c << std::endl;
+void Convert::castFloat(void) {
+  _char = static_cast<char>(_float);
+  _int = static_cast<int>(_float);
+  _double = static_cast<float>(_float);
+  std::cout << std::showpoint << std::fixed << std::setprecision(1);
+  if (errInt == -114) {
+    std::cout << "char : impossible" << std::endl;
+    std::cout << "int : impossible" << std::endl;
+  } else {
+    if (errChar == -114)
+      std::cout << "char : Non displayable" << std::endl;
+    else
+      std::cout << "char : " << _char << std::endl;
+    std::cout << "int : " << _int << std::endl;
+  }
+  std::cout << "float : " << _float << "f" << std::endl;
+  std::cout << "double : " << _double << std::endl;
 }
 
-void Convert::caseLiteral(void) { std::cout << "it's literal" << std::endl; }
+void Convert::castDouble(void) {
+  _char = static_cast<char>(_double);
+  _int = static_cast<int>(_double);
+  _float = static_cast<float>(_double);
+  std::cout << std::showpoint << std::fixed << std::setprecision(1);
+  if (errInt == -114) {
+    std::cout << "char : impossible" << std::endl;
+    std::cout << "int : impossible" << std::endl;
+  } else {
+    if (errChar == -114)
+      std::cout << "char : Non displayable" << std::endl;
+    else
+      std::cout << "char : " << _char << std::endl;
+    std::cout << "int : " << _int << std::endl;
+  }
+  std::cout << "float : " << _float << "f" << std::endl;
+  std::cout << "double : " << _double << std::endl;
+}
+
+void Convert::castChar(void) {
+  c = (_input[0]);
+  std::cout << "char : " << c << std::endl;
+  _int = static_cast<int>(c);
+  _float = static_cast<float>(c);
+  _double = static_cast<double>(c);
+  std::cout << std::showpoint << std::fixed << std::setprecision(1);
+  std::cout << "int : " << _int << std::endl;
+  std::cout << "float : " << _float << "f" << std::endl;
+  std::cout << "double : " << _double << std::endl;
+}
+
+void Convert::caseLiteral(void) {
+  std::cout << "char : "
+            << "literal/ not displayable" << std::endl;
+  std::cout << "int : "
+            << "literal/ not displayable" << std::endl;
+  std::cout << "float : "
+            << "literal/ not displayable" << std::endl;
+  std::cout << "double : "
+            << "literal/ not displayable" << std::endl;
+}
