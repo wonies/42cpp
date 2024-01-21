@@ -3,7 +3,6 @@
 Base::~Base(void) {}
 
 Base *generate(void) {
-  //   std::srand(static_cast<unsigned>(std::time(nullptr)));
   int value = std::rand() % 3;
   std::cout << "value " << value << std::endl;
   if (value == 0)

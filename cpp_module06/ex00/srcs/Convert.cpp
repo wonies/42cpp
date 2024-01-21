@@ -44,13 +44,14 @@ void Convert::scalarType(std::string input) {
 }
 
 bool Convert::pseudo(void) {
+  errZero = 0;
   double temp = strtod(_input.c_str(), NULL);
   const double INF = std::numeric_limits<double>::infinity();
   if (temp > CHAR_MAX || temp < CHAR_MIN) errChar = -114;
   if (temp == 0) {
-    errChar = -114;
+    errZero = -108;
   }
-  if (isnan(temp) || temp == INF || temp == -INF)
+  if (std::isnan(temp) || temp == INF || temp == -INF)
     return 1;
   else
     return 0;
@@ -68,7 +69,6 @@ void Convert::castPseudo(void) {
 }
 
 bool Convert::checkInt(void) {
-  *_end = '\0';
   errChar = 0;
   errInt = 0;
   long temp = strtol(_input.c_str(), &_end, 10);
@@ -120,8 +120,10 @@ void Convert::castInt(void) {
   _float = static_cast<float>(_int);
   _double = static_cast<double>(_int);
   std::cout << std::showpoint << std::fixed << std::setprecision(1);
-  if (errChar == -114)
+  if (errZero == -108)
     std::cout << "char : Non displayable" << std::endl;
+  else if (errChar == -114)
+    std::cout << "char : impossible" << std::endl;
   else
     std::cout << "char : " << _char << std::endl;
   std::cout << "int : " << _int << std::endl;
@@ -138,8 +140,10 @@ void Convert::castFloat(void) {
     std::cout << "char : impossible" << std::endl;
     std::cout << "int : impossible" << std::endl;
   } else {
-    if (errChar == -114)
+    if (errZero == -108)
       std::cout << "char : Non displayable" << std::endl;
+    else if (errChar == -114)
+      std::cout << "char : impossible" << std::endl;
     else
       std::cout << "char : " << _char << std::endl;
     std::cout << "int : " << _int << std::endl;
@@ -157,8 +161,10 @@ void Convert::castDouble(void) {
     std::cout << "char : impossible" << std::endl;
     std::cout << "int : impossible" << std::endl;
   } else {
-    if (errChar == -114)
+    if (errZero == -108)
       std::cout << "char : Non displayable" << std::endl;
+    else if (errChar == -114)
+      std::cout << "char : impossible" << std::endl;
     else
       std::cout << "char : " << _char << std::endl;
     std::cout << "int : " << _int << std::endl;
@@ -169,7 +175,7 @@ void Convert::castDouble(void) {
 
 void Convert::castChar(void) {
   c = (_input[0]);
-  std::cout << "char : " << c << std::endl;
+  std::cout << "char : " << _input[0] << std::endl;
   _int = static_cast<int>(c);
   _float = static_cast<float>(c);
   _double = static_cast<double>(c);

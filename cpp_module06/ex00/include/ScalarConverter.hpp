@@ -16,12 +16,6 @@ class ScalarConverter {
   ScalarConverter(ScalarConverter const &instance);
   ScalarConverter &operator=(ScalarConverter const &rhs);
   ~ScalarConverter(void);
-  static double _conv;
-  char _char;
-  int _int;
-  float _float;
-  double _double;
-  static char *_endptr;
 };
 
 #endif

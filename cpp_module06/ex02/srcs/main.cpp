@@ -1,7 +1,7 @@
 #include "Base.hpp"
 
 int main(void) {
-  std::srand(static_cast<unsigned>(std::time(nullptr)));
+  std::srand(static_cast<unsigned>(std::time(0)));
   Base *a = generate();
   Base *b = generate();
   Base *c = generate();

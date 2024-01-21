@@ -1,6 +1,9 @@
 #ifndef CONVERT_HPP
 #define CONVERT_HPP
+#include <climits>
+#include <cmath>
 #include <iomanip>
+#include <limits>
 #include <string>
 
 #include "ScalarConverter.hpp"
@@ -47,6 +50,7 @@ class Convert {
   std::string _input;
   int errChar;
   int errInt;
+  int errZero;
 };
 
 #endif
