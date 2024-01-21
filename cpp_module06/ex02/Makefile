@@ -1,4 +1,4 @@
-NAME	=  serial
+NAME	=  dynamic
 CXX = c++
 RM = rm -f
 

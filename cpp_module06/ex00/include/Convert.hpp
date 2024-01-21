@@ -13,14 +13,6 @@ enum type_define {
   type_literal,
 };
 
-enum type_err {
-  err_overflow = 0,
-  err_charoverflow,
-  err_nan,
-  err_inf,
-
-};
-
 class Convert {
  public:
   Convert(void);
