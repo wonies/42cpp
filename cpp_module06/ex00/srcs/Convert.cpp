@@ -6,6 +6,17 @@ Convert::Convert(Convert const &instance) { *this = instance; }
 
 Convert &Convert::operator=(Convert const &rhs) {
   if (this != &rhs) {
+    strcpy(_end, rhs._end);
+    _dinput = rhs._dinput;
+    _int = rhs._int;
+    _float = rhs._float;
+    _char = rhs._char;
+    _double = rhs._double;
+    c = rhs.c;
+    _input = rhs._input;
+    errChar = rhs.errChar;
+    errInt = rhs.errInt;
+    errZero = rhs.errZero;
   }
   return *this;
 }

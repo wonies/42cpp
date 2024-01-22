@@ -2,6 +2,7 @@
 #define CONVERT_HPP
 #include <climits>
 #include <cmath>
+#include <cstring>
 #include <iomanip>
 #include <limits>
 #include <string>
