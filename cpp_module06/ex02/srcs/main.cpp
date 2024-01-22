@@ -12,4 +12,8 @@ int main(void) {
   a->identify(a);
   b->identify(b);
   c->identify(c);
+
+  delete a;
+  delete b;
+  delete c;
 }
