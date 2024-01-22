@@ -1,10 +1,11 @@
 #ifndef BASE_HPP
 #define BASE_HPP
 
+#include <stdint.h>
+
 #include <cstdlib>
 #include <ctime>
 #include <iostream>
-
 class Base {
  public:
   virtual ~Base(void);
