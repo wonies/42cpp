@@ -9,7 +9,7 @@ int main(void) {
   iter(arr, arrLen, swapElement<int>);
   std::cout << "\n-----------------------" << std::endl;
   iter<int>(arr, arrLen, swapElement);
-  // iter(arr, arrLen, countValue<int>);  // 반환형이 int일 때.
+  iter(arr, arrLen, countValue<int>);  // 반환형이 int일 때.
 
   printElement printer;  // 객체로 전달
   iter(arr, arrLen, printer);
@@ -33,15 +33,4 @@ int main(void) {
   iter(constArr, constArrLen, castConst<const int>);
   std::cout << "\n-------const & not const -----\n";
   iter(constArr, constArrLen, castConst<int>);
-
-  //-------------t1, t2, t3로 했을 때 -----------------
-  // iter<int, size_t, printElement>(arr, arrLen, printElement());
-  // iter<int *, size_t, void (*)(int)>(arr, arrLen, swapElement);
-  //------------------------------
-
-  // iter<const int, size_t, int>(arr, arrLen, printElement);
-
-  // int arrs[] = {9, 10, 11, 12};
-  // int arrsLen = sizeof(arrs) / sizeof(arrs[0]);
-  // iter(arrs, arrsLen, swapElement());
 }

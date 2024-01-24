@@ -71,35 +71,12 @@ void iter(T1 *adr, size_t len, T2 &f) {
 }
 
 // -----------[countValue]-----------------
-// template <typename T1, typename T2>
-// void iter(T1 *adr, size_t len, T2 (*f)(T1 &)) {
-//   // for (size_t i = 0; i < len; i++) f(adr[i]);
-//   int res = 0;
-//   for (size_t i = 0; i < len; i++) res += f(adr[i]);
-//   std::cout << "\nres : " << res << std::endl;
-// }
-
-// template <typename T1, typename T2, typename T3>
-// void iter(T1 adr, T2 len, void (*f)(T3 &)) {
-//   for (T2 i = 0; i < len; i++) {
-//     f(adr[i]);
-//   }
-// }  // T3로 했을 경우에는 T1 에 *adr을 안해줘도 되지만, 같은 T1으로 하려면
-//    // 자료형구분을 위해 [*adr]을 필수로 해야한다.
-
-// template <typename T1, typename T2, typename T3>
-// void iter(T1 adr, T2 len, T3 &f) {  // T3는 printElement 객체를 불러 오는 것
-//   for (T2 i = 0; i < len; i++) {
-//     f(adr[i]);
-//   }
-// }
-
-// template <typename T1, typename T2, typename func>
-
-// void iter(T1 const adr, T2 const len, void (*f)(func &)) {
-//   for (T2 i = 0; i < len; i++) {
-//     f(adr[i]);
-//   }
-// }
+template <typename T1, typename T2>
+void iter(T1 *adr, size_t len, T2 (*f)(T1 &)) {
+  // for (size_t i = 0; i < len; i++) f(adr[i]);
+  int res = 0;
+  for (size_t i = 0; i < len; i++) res += f(adr[i]);
+  std::cout << "\n***res*** : " << res << std::endl;
+}
 
 #endif
