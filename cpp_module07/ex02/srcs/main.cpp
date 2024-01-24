@@ -61,6 +61,12 @@ int main(void) {
   copytest[20] = 99;
   std::cout << "\ncopy alert : " << copytest[20] << std::endl;
   std::cout << "seperate exist<int> : " << arr[20] << std::endl;
+
+  std::cout << "\n\n----------size() member-function----------\n\n";
+  std::cout << "arr's size : " << arr.size() << std::endl;
+  std::cout << "char arr's size : " << alloctest.size() << std::endl;
+
+  // alloctest.size_while();
 }
 
 // #define MAX_VAL 750

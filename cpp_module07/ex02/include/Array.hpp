@@ -25,6 +25,7 @@ class Array {
     if (val >= _n || val < 0) throw std::out_of_range("Index : out of range");
     return _arr[val];
   }
+  int size() { return _n; }
 
  private:
   T *_arr;
