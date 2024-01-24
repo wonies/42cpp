@@ -65,8 +65,6 @@ int main(void) {
   std::cout << "\n\n----------size() member-function----------\n\n";
   std::cout << "arr's size : " << arr.size() << std::endl;
   std::cout << "char arr's size : " << alloctest.size() << std::endl;
-
-  // alloctest.size_while();
 }
 
 // #define MAX_VAL 750
