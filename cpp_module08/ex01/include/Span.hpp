@@ -1,8 +1,11 @@
 #ifndef SPAN_HPP
 #define SPAN_HPP
 
+#include <algorithm>
 #include <iostream>
 #include <list>
+#include <numeric>
+#include <stdexcept>
 #include <vector>
 class Span {
  public:
@@ -24,6 +27,7 @@ class Span {
 
  private:
   std::vector<int> _arr;
+  unsigned int _size;
 };
 
 #endif
