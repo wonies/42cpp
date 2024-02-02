@@ -83,7 +83,8 @@ bool Convert::checkInt(void) {
   errChar = 0;
   errInt = 0;
   long temp = strtol(_input.c_str(), &_end, 10);
-  if (temp > CHAR_MAX || temp < CHAR_MIN) errChar = -114;
+  std::cout << "end ptr " << _end << std::endl;
+  if (temp < 0 || temp > 256) errChar = -114;
   if (temp > INT_MAX || temp < INT_MIN) {
     errInt = -114;
     return 0;
