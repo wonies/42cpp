@@ -12,8 +12,8 @@ BitcoinExchange &BitcoinExchange::operator=(BitcoinExchange const &rhs) {
     _mm = rhs._mm;
     _dd = rhs._dd;
     _val = rhs._val;
-    _maps = rhs._maps;
-    //_maps.insert(rhs._maps.begin(), rhs._maps.end())
+    // _maps = rhs._maps;
+    _maps.insert(rhs._maps.begin(), rhs._maps.end());
   }
   return *this;
 }
@@ -78,7 +78,7 @@ bool BitcoinExchange::inputvalid(std::string line) {
       return false;
     }
   } else {
-    std::cout << "Error: not valid input line\n";
+    std::cout << "Error: bad input => " << line.substr(0, 10) << std::endl;
     return false;
   }
   return true;
@@ -96,9 +96,8 @@ bool BitcoinExchange::calandervalid(void) {
       return false;
     }
   }
-
   if (_mm < 1 || _mm > 12) {
-    std::cout << "Error: not valid month" << std::endl;
+    std::cout << "Error: bad input " << std::endl;
     return false;
   }
   if (_mm == 4 || _mm == 6 || _mm == 9 || _mm == 11) {
@@ -121,15 +120,6 @@ bool BitcoinExchange::calandervalid(void) {
   }
   return true;
 }
-// 2011-01-03 => 3 = 0.9
-// 2011-01-03 => 2 = 0.6
-// 2011-01-03 => 1 = 0.3
-// 2011-01-03 => 1.2 = 0.36
-// 2011-01-09 => 1 = 0.32
-// Error: not a positive number.
-// Error: bad input => 2001-42-42
-// 2012-01-11 => 1 = 7.1
-// Error: too large a number
 
 bool BitcoinExchange::mapdata(std::string line) {
   std::string lineinput =
@@ -153,6 +143,5 @@ bool BitcoinExchange::mapdata(std::string line) {
     std::cout << "database isn't exist\n";
     return false;
   }
-
   return true;
 }
