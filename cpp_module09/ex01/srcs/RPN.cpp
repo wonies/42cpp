@@ -28,7 +28,7 @@ bool RPN::err(std::string input) {
 
 bool RPN::enter(std::string input) {
   if (!err(input)) return false;
-  std::stack<int_least32_t> _stack;
+  std::stack<int> _stack;
   int value = 0;
 
   for (size_t i = 0; i < input.length(); i++) {
@@ -38,9 +38,12 @@ bool RPN::enter(std::string input) {
         std::cerr << "Error\n";
         return false;
       }
+
       int operandL = _stack.top();
+      std::cout << operandL << std::endl;
       _stack.pop();
       int operandR = _stack.top();
+      std::cout << operandR << std::endl;
       _stack.pop();
       if (c == '+')
         value = operandL + operandR;
@@ -50,8 +53,10 @@ bool RPN::enter(std::string input) {
         value = operandL - operandR;
       else if (c == '/')
         value = operandL / operandR;
+    } else if (c >= '0' && c <= '9') {
+      _stack.push(c - '0');
     }
-    _stack.push(c - '0');
   }
+  std::cout << value << std::endl;
   return true;
 }
