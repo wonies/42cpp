@@ -71,4 +71,3 @@ bool RPN::enter(std::string input) {
   // }
   return true;
 }
-ㅇ
