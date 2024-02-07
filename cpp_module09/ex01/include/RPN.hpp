@@ -8,14 +8,14 @@
 
 class RPN {
  public:
+  RPN(void);
+  ~RPN(void);
   bool enter(std::string input);
   bool err(std::string input);
 
  private:
-  //   ~RPN(void);
-  //   RPN(void);
-  //   RPN(RPN const &instance);
-  //   RPN &operator=(RPN const &rhs);
+  RPN(RPN const &instance);
+  RPN &operator=(RPN const &rhs);
 };
 
 #endif

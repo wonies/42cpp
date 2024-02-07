@@ -1,5 +1,7 @@
 #include "RPN.hpp"
-// RPN::~RPN(void) {}
+RPN::~RPN(void) {}
+
+RPN::RPN(void) {}
 
 bool RPN::err(std::string input) {
   int ccnt = 0;
@@ -9,7 +11,7 @@ bool RPN::err(std::string input) {
       char c = input[i];
       if (!((c >= '0' && c <= '9') ||
             (c == '+' || c == '-' || c == '*' || c == '/' || c == ' '))) {
-        throw std::out_of_range("Index : out of range");
+        throw std::out_of_range("Error");
       } else if (c >= '0' && c <= '9') {
         ccnt++;
       } else if (c == '+' || c == '-' || c == '*' || c == '/')
@@ -40,23 +42,33 @@ bool RPN::enter(std::string input) {
       }
 
       int operandL = _stack.top();
-      std::cout << operandL << std::endl;
       _stack.pop();
       int operandR = _stack.top();
-      std::cout << operandR << std::endl;
       _stack.pop();
       if (c == '+')
         value = operandL + operandR;
       else if (c == '*')
         value = operandL * operandR;
       else if (c == '-')
-        value = operandL - operandR;
-      else if (c == '/')
-        value = operandL / operandR;
+        value = operandR - operandL;
+      else if (c == '/') {
+        if (operandL == 0) {
+          std::cerr << "can't devided by zero\n";
+          return false;
+        }
+        value = operandR / operandL;
+      }
+      _stack.push(value);
     } else if (c >= '0' && c <= '9') {
       _stack.push(c - '0');
     }
   }
   std::cout << value << std::endl;
+  // while (!_stack.empty()) {
+  //   int topValue = _stack.top();
+  //   _stack.pop();
+  //   std::cout << "stack : " << topValue << std::endl;
+  // }
   return true;
 }
+ㅇ
