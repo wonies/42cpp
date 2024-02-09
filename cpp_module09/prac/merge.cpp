@@ -1,9 +1,8 @@
 #include <iostream>
 #include <vector>
 void mergesort(std::vector<long long> &origin, int low, int high) {
-  int mid = low + (high - low) / 2;
-  int lside = mid - low + 1;
-  int rside = high - mid;
+  int lside = high - low + 1;
+  int rside = high - start;
 
   std::vector<long long> larr(lside);
   std::vector<long long> rarr(rside);
@@ -32,9 +31,14 @@ void mergesort(std::vector<long long> &origin, int low, int high) {
   while (j < rside) origin[k++] = rarr[j++];
 }
 
-void merge(std::vector origin)
+void merge(std::vector<long long> &origin, int start, int end) {
+  int mid = start + (end - low) / 2;
+  if (start < end) {
+    mergesort(origin, )
+  }
+}
 
-    int main(void) {
+int main(void) {
   std::vector<long long> origin = {27, 10, 12, 20, 25, 13, 15, 22};
   mergesort(origin, 0, 7);
   for (int i = 0; i < origin.size(); i++) {
