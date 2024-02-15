@@ -14,8 +14,12 @@ int main(int ac, char **av) {
   for (int i = 0; i < 6; i++) std::cout << pm._vector[i] << " ";
   std::cout << "\n";
   pm._size = pm._vector.size();
-  pm.pairsplit(0, pm._size - 1);
+  // pm.pairsplit(0, pm._size - 1);
+  // pm.pairsplit();
+  pm.pair(0, 5, 0);
   for (int i = 0; i < 6; i++) std::cout << pm._vector[i] << " ";
+  // std::cout << "\n";
+  // for (int i = 0; i < 6; i++) std::cout << pm._mainchain[i] << " ";
 
   return 0;
 }
