@@ -114,21 +114,22 @@ void Pmerge::jacobsthal(int n) {
   }
 }
 
-void Pmerge::insertmain(int index) {
-  int _psize = _pending.size();
-  int _msize = _mainchain.size();
-  if (index >= _psize) {
-    return;  // 기반 조건: 모든 pending 요소가 처리됨
-  }
-  int insertPosition = _sequence[index];  // 삽입할 위치 결정
-  if (insertPosition > _msize) {
-    insertPosition = _msize;  // mainchain의 범위를 초과하지 않도록 조정
-  }
-  _mainchain.insert(_mainchain.begin() + insertPosition, _pending[index]);
+// void Pmerge::insertmain(int index) {
+//   int _psize = _pending.size();
+//   int _msize = _mainchain.size();
+//   if (index >= _psize) {
+//     return;  // 기반 조건: 모든 pending 요소가 처리됨
+//   }
+//   int insertPosition = _sequence[index];  // 삽입할 위치 결정
+//   if (insertPosition > _msize) {
+//     insertPosition = _msize;  // mainchain의 범위를 초과하지 않도록 조정
+//   }
+//   _mainchain.insert(_mainchain.begin() + insertPosition, _pending[index]);
+//   // 다음 요소에 대해 재귀 호출
+//   insertmain(index + 1);
+// }
 
-  // 다음 요소에 대해 재귀 호출
-  insertmain(index + 1);
-}
+void Pmerge::insertmain(int index) {}
 
 void Pmerge::pendtomain(void) {
   jacobsthal(_pending.size());
