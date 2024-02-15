@@ -15,9 +15,12 @@ class Pmerge {
   int _size;
   std::vector<int> _mainchain;
   std::vector<int> _pending;
-  std::vector<int> jacobsthal(int n);
+  std::vector<int> _sequence;
+  void jacobsthal(int n);
   void pendtomain(void);
   void pair(int low, int high, int depth);
+  void mainchain(void);
+  void insertmain(int index);
 
  private:
   //   Pmerge(void);

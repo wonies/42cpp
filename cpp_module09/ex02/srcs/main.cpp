@@ -18,8 +18,14 @@ int main(int ac, char **av) {
   // pm.pairsplit();
   pm.pair(0, 5, 0);
   for (int i = 0; i < 6; i++) std::cout << pm._vector[i] << " ";
-  // std::cout << "\n";
-  // for (int i = 0; i < 6; i++) std::cout << pm._mainchain[i] << " ";
+  pm.mainchain();
+  // pm.pendtomain();
+  std::cout << "\n";
+  for (int i = 0; i < 3; i++) std::cout << pm._mainchain[i] << " ";
+  std::cout << "\n";
+
+  for (int i = 0; i < 3; i++) std::cout << pm._pending[i] << " ";
+  for (int i = 0; i < 6; i++) std::cout << pm._mainchain[i] << " ";
 
   return 0;
 }
