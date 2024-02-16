@@ -12,8 +12,12 @@ class Pmerge {
   std::deque<int> deq;
   std::vector<std::pair<int, int> > _vector;
   std::pair<int, int> _deque;
+  std::vector<int> _sequence;
   void pair(void);
   void pairvec(void);
+  void sortpair(int left, int right);
+  void comparesort(int left, int mid, int right);
+  void jnum(int n);
 
  private:
   //   Pmerge(void);

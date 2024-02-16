@@ -22,6 +22,7 @@ class Pmerge {
   void pair(int low, int high, int depth);
   void mainchain(void);
   void insertmain(int index);
+  void jnum(void);
 
  private:
   //   Pmerge(void);
