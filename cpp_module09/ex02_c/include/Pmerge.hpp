@@ -15,9 +15,12 @@ class Pmerge {
   std::vector<int> _sequence;
   void pair(void);
   void pairvec(void);
-  void sortpair(int left, int right);
+  void sortpair(int left, int right, int k);
   void comparesort(int left, int mid, int right);
   void jnum(int n);
+  void jsort(int n);
+  void insertsort(int left, int right);
+  int _size;
 
  private:
   //   Pmerge(void);

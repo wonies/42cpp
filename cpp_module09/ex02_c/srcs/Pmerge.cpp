@@ -32,8 +32,12 @@ void Pmerge::comparesort(int left, int mid, int right) {
   while (j < rsize) _vector[k++] = _R[j++];
 }
 
-void Pmerge::sortpair(int left, int right) {
-  if (left < right) {
+// void Pmerge::insertsort(int left, int right) {}
+
+void Pmerge::sortpair(int left, int right, int k) {
+  if (right - left + 1 <= k)
+    insertsort(left, right);
+  else if (left < right) {
     int pivot = (left + right) / 2;
     sortpair(left, pivot);
     sortpair(pivot + 1, right);
@@ -58,13 +62,36 @@ void Pmerge::pairvec(void) {
     //           << " vector second : " << _vector[i].second << "\n";
   }
 
-  sortpair(0, mid - 1);
+  sortpair(0, mid - 1, 5);
   for (int i = 0; i < mid; i++)
     std::cout << "vector first : " << _vector[i].first
               << " vector second : " << _vector[i].second << "\n";
 }
 
+// void insertion(int value) {
+//   for (size_t i = 0; i < _size; ++i) {
+//     std::pair<int, int> key = _vector[i];
+//     int j = i - 1;
+
+//     while (j >= 0 && _vector[j].first < value) {
+//       _vector[j + i] = _vector[j];
+//       --j;
+//     }
+//     _vector[j + 1] = key;
+//   }
+// }
+
+void Pmerge::jsort(int n) {
+  if (n >= _sequence[n]) {
+    for (int i = 0; i < n; i++) {
+      _vector[i].second
+    }
+  }
+}
+
 void Pmerge::pair(void) {
+  _size = vec.size() / 2;
   pairvec();
-  jnum(3);
+  jnum(_size);
+  jsort(_size);
 }
