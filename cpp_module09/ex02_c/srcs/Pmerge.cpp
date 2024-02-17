@@ -34,6 +34,7 @@ void Pmerge::comparesort(int left, int mid, int right) {
 
 void Pmerge::pendtomain(int idx) {
   while (idx == _idx) {
+    insertsort(_vector[idx - 1].second);
   }
 }
 
@@ -50,12 +51,11 @@ void Pmerge::pendorder(void) {
     }
   }
 }
-// void Pmerge::insertsort(int left, int right) {}
+
+void Pmerge::insertsort(int value) {}
 
 void Pmerge::sortpair(int left, int right, int k) {
-  if (right - left + 1 <= k)
-    insertsort(left, right);
-  else if (left < right) {
+  if (left < right) {
     int pivot = (left + right) / 2;
     sortpair(left, pivot, k);
     sortpair(pivot + 1, right, k);

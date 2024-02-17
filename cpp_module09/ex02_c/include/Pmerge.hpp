@@ -20,7 +20,7 @@ class Pmerge {
   void comparesort(int left, int mid, int right);
   void jnum(int n);
   void jsort(int n);
-  void insertsort(int left, int right);
+  void insertsort(int value);
   void pendorder(void);
   int _size;
   void pendtomain(int index);
