@@ -20,7 +20,7 @@ int main(int ac, char **av) {
   // pm.pairsplit(0, pm._size - 1);
   // pm.pairsplit();
   // pm.pair(0, 5, 0);
-  // for (int i = 0; i < 6; i++) std::cout << pm._vector[i] << " ";
+  // for (int i = 0; i < 3; i++) std::cout << pm._vector[i] << " ";
   // pm.mainchain();
   // pm.pendtomain();
   // std::cout << "\n";

@@ -13,6 +13,7 @@ class Pmerge {
   std::vector<std::pair<int, int> > _vector;
   std::pair<int, int> _deque;
   std::vector<int> _sequence;
+  std::vector<int> mainchain;
   void pair(void);
   void pairvec(void);
   void sortpair(int left, int right, int k);
@@ -20,7 +21,10 @@ class Pmerge {
   void jnum(int n);
   void jsort(int n);
   void insertsort(int left, int right);
+  void pendorder(void);
   int _size;
+  void pendtomain(int index);
+  int _idx;
 
  private:
   //   Pmerge(void);
