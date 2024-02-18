@@ -32,27 +32,46 @@ void Pmerge::comparesort(int left, int mid, int right) {
   while (j < rsize) _vector[k++] = _R[j++];
 }
 
-void Pmerge::pendtomain(int idx) {
-  while (idx == _idx) {
+void Pmerge::pendtomain(int idx, int bidx) {
+  while (idx > bidx) {
+    std::cout << "idx : " << idx << std::endl;
+    std::cout << "b_idx : " << bidx << std::endl;
     insertsort(_vector[idx - 1].second);
+    std::vector<int>::iterator it = mainchain.begin();
+    while (it != mainchain.end()) {
+      std::cout << "mainchain's val : " << *it << " ";
+      it++;
+    }
+    std::cout << "\n";
+    idx--;
   }
 }
 
 void Pmerge::pendorder(void) {
-  int i = 0;
-  int j = 2;
-  _idx = 0;
-  while (i < _size) {
-    if (_size < _sequence[j])
-      break;
-    else {
-      pendtomain(_sequence[j]);
-      _idx = _sequence[j];
+  int j = 1;  // 시작 인덱스를 1로 설정
+  int ssize = _sequence.size();
+  while (j < ssize) {  // _sequence 범위를 넘지 않도록 조건 변경
+    if (_size < _sequence[j]) {
+      break;  // _size가 현재 확인하는 Jacobsthal 수보다 작으면 반복 종료
+    } else {
+      pendtomain(_sequence[j], _sequence[j - 1]);
+      j++;  // 다음 Jacobsthal 수 확인을 위해 인덱스 증가
     }
   }
 }
-
-void Pmerge::insertsort(int value) {}
+void Pmerge::insertsort(int value) {
+  // int n = mainchain.size();
+  std::vector<int>::iterator it = mainchain.begin();
+  while (it != mainchain.end()) {
+    if (value > *it)
+      ++it;
+    else {
+      mainchain.insert(it, value);
+      return;
+    }
+  }
+  mainchain.push_back(value);
+}
 
 void Pmerge::sortpair(int left, int right, int k) {
   if (left < right) {
@@ -69,15 +88,10 @@ void Pmerge::pairvec(void) {
   for (int i = 0; i < mid; i++) {
     std::cout << "vec i : " << vec[i] << "\n";
     std::cout << "vec i + mid : " << vec[i + mid] << "\n";
-    // _vector[i] = std::make_pair(vec[i], vec[i + mid]);
     if (vec[i] > vec[i + mid])
       _vector.push_back(std::make_pair(vec[i], vec[i + mid]));
     else
       _vector.push_back(std::make_pair(vec[i + mid], vec[i]));
-
-    // _vector.push_back(std::make_pair(vec[i], vec[i + mid]));
-    // std::cout << "vector first : " << _vector[i].first
-    //           << " vector second : " << _vector[i].second << "\n";
   }
 
   sortpair(0, mid - 1, 5);
@@ -86,36 +100,45 @@ void Pmerge::pairvec(void) {
               << " vector second : " << _vector[i].second << "\n";
 }
 
-// void insertion(int value) {
-//   for (size_t i = 0; i < _size; ++i) {
-//     std::pair<int, int> key = _vector[i];
-//     int j = i - 1;
-
-//     while (j >= 0 && _vector[j].first < value) {
-//       _vector[j + i] = _vector[j];
-//       --j;
-//     }
-//     _vector[j + 1] = key;
-//   }
-// }
-
-// void Pmerge::jsort(int n) {
-//   if (n >= _sequence[n]) {
-//     for (int i = 0; i < n; i++) {
-//       _vector[i].second
-//     }
-//   }
-// }
+void Pmerge::printvector(void) {
+  int _vecmainchain = mainchain.size();
+  std::cout << "After: ";
+  for (int i = 0; i < _vecmainchain; i++) {
+    std::cout << mainchain[i] << " ";
+  }
+  std::cout << "\n";
+}
 
 void Pmerge::pair(void) {
+  _vecstart = clock();
   _size = vec.size() / 2;
+  int _vecsize = vec.size();
+
+  std::cout << "Before: ";
+  for (int i = 0; i < _vecsize; ++i) std::cout << vec[i] << " ";
+  std::cout << "\n";
   pairvec();
   jnum(_size);
-  // jsort(_size);
-  sortpair(0, _size, 5);
+
   for (int i = 0; i < _size; i++) {
-    std::cout << "vector : " << _vector[i].first << std::endl;
     mainchain.push_back(_vector[i].first);
+    std::cout << "mainchain : " << mainchain[i] << std::endl;
   }
-  insertsort(0, 5);
+  pendorder();
+  _vecend = clock();
+}
+
+bool Pmerge::input(int ac, char **av) {
+  if (ac == 2) {
+  }
+}
+
+void Pmerge::excute(int ac, char **av) {
+  input(ac, av);
+  clock_t vecstart = clock();
+  vector(ac, av);
+  clock_t vecend = clock();
+  double usec = (((double)(vecend - vecstart)) / CLOCKS_PER_SEC);
+  std::cout << "Time to process a range of " << vec.size()
+            << " elements with std::vector : " << usec << " us\n";
 }
