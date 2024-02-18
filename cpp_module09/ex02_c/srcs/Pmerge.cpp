@@ -129,16 +129,49 @@ void Pmerge::pair(void) {
 }
 
 bool Pmerge::input(int ac, char **av) {
+  std::cout << "hello\n";
   if (ac == 2) {
+    int i = 0;
+    // int flag = 0;
+    std::string systeminput;
+    while (av[1][i] != '\0') {
+      systeminput += av[1][i];
+      ++i;
+    }
+    FILE *pipe = popen(systeminput.c_str(), "r");
+    if (!pipe) throw std::runtime_error("Error: can't read the command");
+    char buf[128];
+    while (fgets(buf, sizeof(buf), pipe) != NULL) {
+      std::istringstream iss(buf);
+      int num = 0;
+      while (iss >> num) vec.push_back(num);
+    }
+    // if (flag == 0) {
+    //   // int result = system(av[1]);
+    //   // if (result != 0) throw std::runtime_error("Error: not enough
+    //   // arguments");
+    //   FILE *pipe = popen(systeminput.c_str(), "r");
+    //   if (!pipe) throw std ::runtime_error("Error: can't not read the
+    //   command"); char buffer[128]; while (fgets(buffer, sizeof(buffer), pipe)
+    //   != NULL) {
+    //     std::istringstream iss(buffer);
+    //     int num = 0;
+    //     std::cout << "\nnum :" << num << std::endl;
+    //     while (iss >> num) vec.push_back(num);
+    //   }
+    // }
   }
+  return 1;
 }
 
 void Pmerge::excute(int ac, char **av) {
   input(ac, av);
+  int vecsize = vec.size();
+  std::cout << "vec size : " << vecsize << std::endl;
   clock_t vecstart = clock();
-  vector(ac, av);
+  // vector(ac, av);
   clock_t vecend = clock();
-  double usec = (((double)(vecend - vecstart)) / CLOCKS_PER_SEC);
+  double usec = (((double)(vecend - vecstart)) * 1000 / CLOCKS_PER_SEC);
   std::cout << "Time to process a range of " << vec.size()
             << " elements with std::vector : " << usec << " us\n";
 }
