@@ -55,7 +55,7 @@ int main(int ac, char **av) {
       throw std::runtime_error("Error : not enough arguments");
     else {
       Pmerge pm;
-      pm.excute(ac, av);
+      pm.execute(ac, av);
     }
   } catch (const std::exception &e) {
     std::cerr << e.what() << '\n';

@@ -16,22 +16,23 @@ class Pmerge {
   std::pair<int, int> _deque;
   std::vector<int> _sequence;
   std::vector<int> mainchain;
-  void pair(void);
-  void pairvec(void);
-  void sortpair(int left, int right, int k);
-  void comparesort(int left, int mid, int right);
   void jnum(int n);
-  void binaryinsert(int value, int left, int right);
-  void pendorder(void);
+  void mainsort(int left, int mid, int right);
   void pendtomain(int index, int bindex);
-  void printvector(void);
-  void excute(int ac, char** av);
+  void binaryinsert(int value, int left, int right);
+  void pendingorder(void);
+  void sortpair(int left, int right);
+  void pairvector(void);
+  void pair(void);
   bool input(int ac, char** av);
+  void execute(int ac, char** av);
+  void pendorder(void);
+  void printvector(void);
   void vector(void);
   int _vecsize;
   int _decsize;
   int _idx;
-  int _size;
+  int pairsize;
 
  private:
   //   Pmerge(void);
