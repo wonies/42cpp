@@ -34,9 +34,7 @@ void Pmerge::comparesort(int left, int mid, int right) {
 
 void Pmerge::pendtomain(int idx, int bidx) {
   while (idx > bidx) {
-    std::cout << "idx : " << idx << std::endl;
-    std::cout << "b_idx : " << bidx << std::endl;
-    insertsort(_vector[idx - 1].second);
+    binaryinsert(_vector[idx - 1].second, 0, idx - 1);
     std::vector<int>::iterator it = mainchain.begin();
     while (it != mainchain.end()) {
       std::cout << "mainchain's val : " << *it << " ";
@@ -48,30 +46,38 @@ void Pmerge::pendtomain(int idx, int bidx) {
 }
 
 void Pmerge::pendorder(void) {
-  int j = 1;  // 시작 인덱스를 1로 설정
+  int j = 1;
   int ssize = _sequence.size();
-  while (j < ssize) {  // _sequence 범위를 넘지 않도록 조건 변경
+  while (j < ssize) {
     if (_size < _sequence[j]) {
-      break;  // _size가 현재 확인하는 Jacobsthal 수보다 작으면 반복 종료
+      break;
     } else {
       pendtomain(_sequence[j], _sequence[j - 1]);
-      j++;  // 다음 Jacobsthal 수 확인을 위해 인덱스 증가
+      j++;
     }
   }
 }
-void Pmerge::insertsort(int value) {
-  // int n = mainchain.size();
-  std::vector<int>::iterator it = mainchain.begin();
-  while (it != mainchain.end()) {
-    if (value > *it)
-      ++it;
-    else {
-      mainchain.insert(it, value);
-      return;
-    }
+
+void Pmerge::binaryinsert(int value, int left, int right) {
+  if (left >= right) {
+    mainchain.insert(mainchain.begin() + left, value);
+    return;
   }
-  mainchain.push_back(value);
-}
+  int mid = left + (right - left) / 2;
+  if (mainchain[mid] < value) }
+
+// void Pmerge::insertsort(int value, int right) {
+//   std::vector<int>::iterator it = mainchain.begin();
+//   while (it != mainchain.end()) {
+//     if (value > *it)
+//       ++it;
+//     else {
+//       mainchain.insert(it, value);
+//       return;
+//     }
+//   }
+//   mainchain.push_back(value);
+// }
 
 void Pmerge::sortpair(int left, int right, int k) {
   if (left < right) {
@@ -110,68 +116,61 @@ void Pmerge::printvector(void) {
 }
 
 void Pmerge::pair(void) {
-  _vecstart = clock();
   _size = vec.size() / 2;
-  int _vecsize = vec.size();
-
   std::cout << "Before: ";
-  for (int i = 0; i < _vecsize; ++i) std::cout << vec[i] << " ";
-  std::cout << "\n";
   pairvec();
   jnum(_size);
 
   for (int i = 0; i < _size; i++) {
     mainchain.push_back(_vector[i].first);
-    std::cout << "mainchain : " << mainchain[i] << std::endl;
   }
   pendorder();
-  _vecend = clock();
 }
 
 bool Pmerge::input(int ac, char **av) {
-  std::cout << "hello\n";
   if (ac == 2) {
     int i = 0;
-    // int flag = 0;
+    int numflag = 0;
     std::string systeminput;
     while (av[1][i] != '\0') {
       systeminput += av[1][i];
+      if (av[1][i] < 48 || av[1][i] > 57) numflag = 1;
       ++i;
     }
-    FILE *pipe = popen(systeminput.c_str(), "r");
-    if (!pipe) throw std::runtime_error("Error: can't read the command");
-    char buf[128];
-    while (fgets(buf, sizeof(buf), pipe) != NULL) {
-      std::istringstream iss(buf);
-      int num = 0;
-      while (iss >> num) vec.push_back(num);
+    if (numflag == 1) {
+      FILE *pipe = popen(systeminput.c_str(), "r");
+      if (!pipe) throw std::runtime_error("Error: can't read the command");
+      char buf[128];
+      while (fgets(buf, sizeof(buf), pipe) != NULL) {
+        std::istringstream iss(buf);
+        int num = 0;
+        while (iss >> num) vec.push_back(num);
+      }
+    } else {
+      throw std::runtime_error("Error: can't sort");
     }
-    // if (flag == 0) {
-    //   // int result = system(av[1]);
-    //   // if (result != 0) throw std::runtime_error("Error: not enough
-    //   // arguments");
-    //   FILE *pipe = popen(systeminput.c_str(), "r");
-    //   if (!pipe) throw std ::runtime_error("Error: can't not read the
-    //   command"); char buffer[128]; while (fgets(buffer, sizeof(buffer), pipe)
-    //   != NULL) {
-    //     std::istringstream iss(buffer);
-    //     int num = 0;
-    //     std::cout << "\nnum :" << num << std::endl;
-    //     while (iss >> num) vec.push_back(num);
-    //   }
-    // }
+  } else {
+    int i = 0;
+    char *endptr = NULL;
+    while (av[++i]) {
+      double input = strtod(av[i], &endptr);
+      if (*endptr != '\0') throw std::runtime_error("Error: not valid input");
+      vec.push_back(input);
+    }
   }
   return 1;
 }
 
 void Pmerge::excute(int ac, char **av) {
   input(ac, av);
-  int vecsize = vec.size();
-  std::cout << "vec size : " << vecsize << std::endl;
+  int _vecsize = vec.size();
+  // std::cout << "vec size : " << vecsize << std::endl;
   clock_t vecstart = clock();
-  // vector(ac, av);
+  // vector();
   clock_t vecend = clock();
   double usec = (((double)(vecend - vecstart)) * 1000 / CLOCKS_PER_SEC);
-  std::cout << "Time to process a range of " << vec.size()
+  std::cout << "Time to process a range of " << _vecsize
             << " elements with std::vector : " << usec << " us\n";
 }
+
+// void Pmerge::vector(void) {}

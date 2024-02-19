@@ -21,19 +21,17 @@ class Pmerge {
   void sortpair(int left, int right, int k);
   void comparesort(int left, int mid, int right);
   void jnum(int n);
-  void insertsort(int value);
+  void binaryinsert(int value, int left, int right);
   void pendorder(void);
   void pendtomain(int index, int bindex);
   void printvector(void);
   void excute(int ac, char** av);
   bool input(int ac, char** av);
-  int _size;
+  void vector(void);
+  int _vecsize;
+  int _decsize;
   int _idx;
-  clock_t _vecstart;
-  clock_t _vecend;
-  clock_t _deqstart;
-  clock_t _deqend;
-  double _usec;
+  int _size;
 
  private:
   //   Pmerge(void);
