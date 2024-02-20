@@ -32,6 +32,7 @@ class Pmerge {
   int _vecsize;
   int _decsize;
   int _idx;
+  double oddvec;
   int pairsize;
   int k;
   void prints(void);

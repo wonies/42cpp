@@ -272,6 +272,12 @@ void Pmerge::pendingorder(void) {
   while (j < ssize) {
     if (pairsize < _sequence[j]) {
       pendtomain(pairsize, _sequence[j - 1]);
+      std::cout << "vector size : " << _vecsize << std::endl;
+      if (_vecsize % 2 != 0) {
+        int msize = mainchain.size();
+        std::cout << "mainchain size : " << msize << std::endl;
+        binaryinsert(oddvec, 0, msize - 1);
+      }
       std::cout << "pair size : " << pairsize << std::endl;
       break;
     } else {
@@ -355,6 +361,10 @@ bool Pmerge::input(int ac, char **av) {
       vec.push_back(input);
     }
     int _vecsize = vec.size();
+    if (_vecsize % 2 != 0) {
+      oddvec = vec[_vecsize - 1];
+      std::cout << "odd vec : " << oddvec << std::endl;
+    }
     i = 0;
     std::cout << "Before: ";
     while (i < _vecsize) {
@@ -367,7 +377,7 @@ bool Pmerge::input(int ac, char **av) {
 
 void Pmerge::execute(int ac, char **av) {
   input(ac, av);
-  int _vecsize = vec.size();
+  _vecsize = vec.size();
   clock_t vecstart = clock();
   k = 0;
   pair();
@@ -375,7 +385,7 @@ void Pmerge::execute(int ac, char **av) {
   std::cout << "After: ";
   int i = -1;
   while (++i < _vecsize) std::cout << mainchain[i] << " ";
-  double usec = (((double)(vecend - vecstart)) * 1000 / CLOCKS_PER_SEC);
+  double usec = (((double)(vecend - vecstart)) * 100000 / CLOCKS_PER_SEC);
   std::cout << "Time to process a range of " << _vecsize
             << " elements with std::vector : " << usec << " us\n";
 }
