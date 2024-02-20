@@ -3,6 +3,7 @@ CXX = c++
 RM = rm -f
 
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98
+CXXFLAGS = -Wall -Wextra -Werror -std=c++98 -g3 -DDEBUG
 INCLUDE = -I include
 
 SRC_DIR = srcs

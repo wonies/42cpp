@@ -33,6 +33,8 @@ class Pmerge {
   int _decsize;
   int _idx;
   int pairsize;
+  int k;
+  void prints(void);
 
  private:
   //   Pmerge(void);

@@ -179,11 +179,19 @@
 
 // void Pmerge::vector(void) {}
 
+void Pmerge::prints(void) {
+  int mid = _vecsize;
+  for (int i = 0; i < mid / 2; ++i) {
+    std::cout << _vector[i].first << " ";
+    std::cout << _vector[i].second << " ";
+  }  // pair끼리 잘 배열되어있는 지 확인
+}
+
 void Pmerge::jnum(int n) {
   _sequence.push_back(0);
   _sequence.push_back(1);
   for (int i = 2; i <= n + 1; ++i) {
-    int next = _sequence[i - 1] + 2 * _sequence[i - 2];
+    int next = (_sequence[i - 1]) + (_sequence[i - 2] * 2);
     _sequence.push_back(next);
   }
 }
@@ -213,19 +221,46 @@ void Pmerge::mainsort(int left, int mid, int right) {
 
 void Pmerge::binaryinsert(int value, int left, int right) {
   if (left >= right) {
-    mainchain.insert(mainchain.begin() + left, value);
+    if (mainchain[left] > value) {
+      k++;
+      mainchain.insert(mainchain.begin() + left, value);
+    } else {
+      mainchain.insert(mainchain.begin() + left + 1, value);
+    }
     return;
   }
-  int mid = left + right / 2;
-  if (mainchain[mid] < value) {
-    binaryinsert(value, left, mid);
-  } else
+  int mid = (left + right) / 2;
+  if (mainchain[mid] == value) {
+    // std::cout << "mid == value / mainchain mid : " << mainchain[mid]
+    //           << std::endl;
+
+    mainchain.insert(mainchain.begin() + mid, value);
+    return;
+  } else if (mainchain[mid] < value) {
+    // std::cout << "mid value / mainchain mid : " << mainchain[mid] <<
+    // std::endl;
     binaryinsert(value, mid + 1, right);
+  } else {
+    // std::cout << "left mid  / mainchain mid : " << mainchain[mid] <<
+    // std::endl;
+    binaryinsert(value, left, mid);
+  }
 }
+// void Pmerge::binaryinsert(int value, int left, int right) {
+//   if (left >= right) {
+//     mainchain.insert(mainchain.begin() + left, value);
+//     return;
+//   }
+//   int mid = (left + right) / 2;
+//   if (mainchain[mid] < value) {
+//     binaryinsert(value, left, mid);
+//   } else
+//     binaryinsert(value, mid + 1, right);
+// }
 
 void Pmerge::pendtomain(int idx, int bidx) {
   while (idx > bidx) {
-    binaryinsert(_vector[idx - 1].second, 0, idx - 1);
+    binaryinsert(_vector[idx - 1].second, 0, idx + k);
     idx--;
   }
 }
@@ -233,10 +268,13 @@ void Pmerge::pendtomain(int idx, int bidx) {
 void Pmerge::pendingorder(void) {
   int j = 1;
   int ssize = _sequence.size();
+  std::cout << "ssize : " << ssize << std::endl;
   while (j < ssize) {
-    if (pairsize < _sequence[j])
+    if (pairsize < _sequence[j]) {
+      pendtomain(pairsize, _sequence[j - 1]);
+      std::cout << "pair size : " << pairsize << std::endl;
       break;
-    else {
+    } else {
       pendtomain(_sequence[j], _sequence[j - 1]);
       j++;
     }
@@ -261,16 +299,27 @@ void Pmerge::pairvector(void) {
       _vector.push_back(std::make_pair(vec[i + mid], vec[i]));
   }
   sortpair(0, mid - 1);
+  prints();
   // for (int i = 0; i < mid; ++i) {
   //   std::cout << _vector[i].first << " ";
   //   std::cout << _vector[i].second << " ";
-  // } // pair끼리 잘 배열되어있는 지 확인
+  // }  // pair끼리 잘 배열되어있는 지 확인
+#ifdef DEBUG
+  std::cout << std::endl;
+  std::cout << "_vector info" << std::endl;
+  std::cout << "_vector first:  ";
+  for (int i = 0; i < mid; ++i) std::cout << _vector[i].first << " ";
+  std::cout << std::endl;
+  std::cout << "_vector second: ";
+  for (int i = 0; i < mid; ++i) std::cout << _vector[i].second << " ";
+  std::cout << std::endl;
+#endif
 }
 
 void Pmerge::pair(void) {
   pairsize = vec.size() / 2;
   pairvector();
-  jnum(pairsize);
+  jnum(pairsize + 1);
   for (int i = 0; i < pairsize; ++i) mainchain.push_back(_vector[i].first);
   pendingorder();
 }
@@ -320,6 +369,7 @@ void Pmerge::execute(int ac, char **av) {
   input(ac, av);
   int _vecsize = vec.size();
   clock_t vecstart = clock();
+  k = 0;
   pair();
   clock_t vecend = clock();
   std::cout << "After: ";
