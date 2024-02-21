@@ -32,7 +32,10 @@ bool RPN::enter(std::string input) {
   if (!err(input)) return false;
   std::stack<int> _stack;
   int value = 0;
-
+  if (input.length() == 1) {
+    std::cout << input << std::endl;
+    return false;
+  }
   for (size_t i = 0; i < input.length(); i++) {
     char c = input[i];
     if (c == '+' || c == '-' || c == '*' || c == '/') {

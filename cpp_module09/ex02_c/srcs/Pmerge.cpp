@@ -96,16 +96,6 @@ void Pmerge::pairvector(void) {
       _vector.push_back(std::make_pair(vec[i + mid], vec[i]));
   }
   sortpair(0, mid - 1);
-  // #ifdef DEBUG
-  //   std::cout << std::endl;
-  //   std::cout << "_vector info" << std::endl;
-  //   std::cout << "_vector first:  ";
-  //   for (int i = 0; i < mid; ++i) std::cout << _vector[i].first << " ";
-  //   std::cout << std::endl;
-  //   std::cout << "_vector second: ";
-  //   for (int i = 0; i < mid; ++i) std::cout << _vector[i].second << " ";
-  //   std::cout << std::endl;
-  // #endif
 }
 
 void Pmerge::pair(void) {
@@ -150,6 +140,13 @@ bool Pmerge::input(int ac, char **av) {
     }
     _vecsize = vec.size();
     _deqsize = _vecsize;
+    int sortflag = 0;
+    for (int i = 1; i < _vecsize - 1; i++) {
+      if (vec[i] > vec[i + 1]) sortflag = 1;
+    }
+    if (sortflag == 0) {
+      throw std::runtime_error("Error: already sorted");
+    }
     k = 0;
     ic = 0;
     if (_vecsize % 2 != 0) {
@@ -174,7 +171,8 @@ void Pmerge::execute(int ac, char **av) {
   std::cout << "After: ";
   int i = -1;
   while (++i < _vecsize) std::cout << mainchain[i] << " ";
-  double usec = (((double)(vecend - vecstart)) * 100000 / CLOCKS_PER_SEC);
+  double usec = (((double)(vecend - vecstart)) * 10 / CLOCKS_PER_SEC);
+  // double usec = ((double)(vecend - vecstart)) * 1000000;
   std::cout << "\nTime to process a range of " << _vecsize
             << " elements with std::vector : " << usec << " us\n";
   clock_t deqstart = clock();
@@ -182,7 +180,7 @@ void Pmerge::execute(int ac, char **av) {
   clock_t deqend = clock();
   i = -1;
   // while (++i < _deqsize) std::cout << deqmainchain[i] << " ";
-  double usecdeq = (((double)(deqend - deqstart)) * 100000 / CLOCKS_PER_SEC);
+  double usecdeq = (((double)(deqend - deqstart)) * 10 / CLOCKS_PER_SEC);
   std::cout << "Time to process a range of " << _deqsize
             << " elements with std::deque : " << usecdeq << " us\n";
 }

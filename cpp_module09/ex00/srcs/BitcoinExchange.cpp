@@ -33,11 +33,16 @@ bool BitcoinExchange::validInput(std::string input) {
   }
   while (std::getline(inputdata, _line)) {
     while (!_line.empty()) {
+      char *endptr = NULL;
       if (!(inputvalid(_line))) break;
-      _yy = std::stod(_line.substr(0, 4));
-      _mm = std::stod(_line.substr(5, 2));
-      _dd = std::abs(std::stod(_line.substr(8, 2)));
-      _val = std::stod(_line.substr(13, _line.find('\0')));
+      _yy = std::strtod(_line.substr(0, 4).c_str(), &endptr);
+      _mm = std::strtod(_line.substr(5, 2).c_str(), &endptr);
+      _dd = std::abs(std::strtod(_line.substr(8, 2).c_str(), &endptr));
+      _val = std::strtod(_line.substr(13, _line.find('\0')).c_str(), &endptr);
+      if (*endptr != '\0') {
+        std::cout << "Error: not only integer\n";
+        break;
+      }
       if (!(calandervalid())) break;
       mapdata(_line);
       _line.clear();
@@ -70,7 +75,7 @@ bool BitcoinExchange::database(void) {
 
 bool BitcoinExchange::inputvalid(std::string line) {
   if (line.find('|') != std::string::npos) {
-    if (!(line[4] == '-' || line[7] == '-')) {
+    if (!(line[4] == '-') || !(line[7] == '-')) {
       std::cout << "Error: not valid input line\n";
       return false;
     } else if (!(line[10] == ' ' && line[12] == ' ')) {
@@ -134,6 +139,10 @@ bool BitcoinExchange::mapdata(std::string line) {
     }
   }
   std::map<int, double>::iterator lower = _maps.lower_bound(target);
+  if (lower == _maps.begin()) {
+    std::cout << "Error: can't find info" << std::endl;
+    return false;
+  }
   std::map<int, double>::iterator prevLower = std::prev(lower);
   if (prevLower != _maps.begin()) {
     std::cout << line.substr(0, 10) << " => " << _val << " = "
