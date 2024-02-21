@@ -10,12 +10,24 @@
 
 class Pmerge {
  public:
+  /* vector */
   std::vector<int> vec;
-  std::deque<int> deq;
   std::vector<std::pair<int, int> > _vector;
-  std::pair<int, int> _deque;
   std::vector<int> _sequence;
   std::vector<int> mainchain;
+  int _vecsize;
+  int k;
+  /* share */
+  double oddvec;
+  int pairsize;
+  /* deque */
+  std::deque<int> deq;
+  std::deque<std::pair<int, int> > _deque;
+  std::deque<int> _seq;
+  std::deque<int> deqmainchain;
+  int _deqsize;
+  int ic;
+  /*vector function*/
   void jnum(int n);
   void mainsort(int left, int mid, int right);
   void pendtomain(int index, int bindex);
@@ -24,18 +36,20 @@ class Pmerge {
   void sortpair(int left, int right);
   void pairvector(void);
   void pair(void);
+  /* share function */
   bool input(int ac, char** av);
   void execute(int ac, char** av);
-  void pendorder(void);
   void printvector(void);
   void vector(void);
-  int _vecsize;
-  int _decsize;
-  int _idx;
-  double oddvec;
-  int pairsize;
-  int k;
-  void prints(void);
+  /*deque function*/
+  void jnumdeq(int n);
+  void mainsortdeq(int left, int mid, int right);
+  void pendtomaindeq(int idx, int bidx);
+  void binaryinsertdeq(int value, int left, int right);
+  void pendingorderdeq(void);
+  void sortdeque(int left, int right);
+  void pairdeque(void);
+  void pairdeq(void);
 
  private:
   //   Pmerge(void);
