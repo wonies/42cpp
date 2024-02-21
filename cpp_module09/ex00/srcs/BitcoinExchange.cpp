@@ -54,6 +54,7 @@ bool BitcoinExchange::validInput(std::string input) {
 
 bool BitcoinExchange::database(void) {
   std::ifstream database("data.csv");
+  char *endptr = NULL;
   if (!database.is_open()) {
     std::cerr << "database can't open" << std::endl;
     return false;
@@ -68,7 +69,8 @@ bool BitcoinExchange::database(void) {
     std::string _sum =
         line.substr(0, 4) + line.substr(5, 2) + line.substr(8, 2);
     int atoisum = atoi(_sum.c_str());
-    _maps[atoisum] = std::stod(line.substr(11, line.find('\0')));
+    _maps[atoisum] =
+        std::strtod(line.substr(11, line.find('\0')).c_str(), &endptr);
   }
   return true;
 }
@@ -127,9 +129,10 @@ bool BitcoinExchange::calandervalid(void) {
 }
 
 bool BitcoinExchange::mapdata(std::string line) {
+  char *endptr = NULL;
   std::string lineinput =
       line.substr(0, 4) + line.substr(5, 2) + line.substr(8, 2);
-  int target = std::stod(lineinput);
+  int target = std::strtod(lineinput.c_str(), &endptr);
   std::map<int, double>::iterator it;
   for (it = _maps.begin(); it != _maps.end(); it++) {
     if (it->first == target) {
