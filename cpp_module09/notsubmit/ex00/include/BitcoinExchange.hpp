@@ -2,8 +2,10 @@
 #define BITCOINEXCHANGE_HPP
 
 #include <algorithm>
+#include <climits>
 #include <cmath>
 #include <fstream>
+#include <iomanip>
 #include <iostream>
 #include <map>
 #include <string>

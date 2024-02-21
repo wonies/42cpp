@@ -21,7 +21,7 @@ BitcoinExchange &BitcoinExchange::operator=(BitcoinExchange const &rhs) {
 BitcoinExchange::~BitcoinExchange(void) {}
 
 bool BitcoinExchange::validInput(std::string input) {
-  std::ifstream inputdata(input);
+  std::ifstream inputdata(input.c_str());
   std::string _line;
 
   if (!inputdata.is_open()) {
@@ -146,8 +146,9 @@ bool BitcoinExchange::mapdata(std::string line) {
     std::cout << "Error: can't find info" << std::endl;
     return false;
   }
-  std::map<int, double>::iterator prevLower = std::prev(lower);
-  if (prevLower != _maps.begin()) {
+  std::map<int, double>::iterator prevLower = lower;
+  --prevLower;
+  if (prevLower != _maps.end()) {
     std::cout << line.substr(0, 10) << " => " << _val << " = "
               << prevLower->second * _val << std::endl;
     return true;
