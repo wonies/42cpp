@@ -55,7 +55,7 @@ void Pmerge::binaryinsert(int value, int left, int right) {
 
 void Pmerge::pendtomain(int idx, int bidx) {
   while (idx > bidx) {
-    binaryinsert(_vector[idx - 1].second, 0, idx + k);
+    binaryinsert(_vector[idx - 1].second, 0, idx + k - 1);
     idx--;
   }
 }
@@ -141,7 +141,7 @@ bool Pmerge::input(int ac, char **av) {
     _vecsize = vec.size();
     _deqsize = _vecsize;
     int sortflag = 0;
-    for (int i = 1; i < _vecsize - 1; i++) {
+    for (int i = 0; i < _vecsize - 1; i++) {
       if (vec[i] > vec[i + 1]) sortflag = 1;
     }
     if (sortflag == 0) {
@@ -249,7 +249,7 @@ void Pmerge::binaryinsertdeq(int value, int left, int right) {
 
 void Pmerge::pendtomaindeq(int idx, int bidx) {
   while (idx > bidx) {
-    binaryinsertdeq(_vector[idx - 1].second, 0, idx + ic);
+    binaryinsertdeq(_vector[idx - 1].second, 0, idx + ic - 1);
     idx--;
   }
 }
