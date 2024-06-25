@@ -14,4 +14,4 @@ class Polymorph: public ASpell
 
         // METHOD
         virtual ASpell* clone() const;
-};
+};                                           
